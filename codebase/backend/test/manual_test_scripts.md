@@ -18,20 +18,16 @@
 ```
 👤 [1] Alo, tôi vừa nhận được thông báo là lịch khám của tôi bị hủy rồi.
 
-👤 [2] Tôi đăng ký khám với bác sĩ Hùng ấy, bác sĩ Lê Sỹ Hùng.
+👤 [2] Tôi đăng ký khám với bác sĩ ngày 5/6.
 
-👤 [3] Ngày mai, 5/6.
+👤 [3] Thế thì bác sĩ Hùng có lịch khám ngày nào gần nhất không?
 
-👤 [4] Thế thì bác sĩ Hùng có lịch khám ngày nào gần nhất không?
-
-👤 [5] Ngày 6/6 thì bác sĩ khám lúc mấy giờ?
-
-👤 [6] Thôi cho tôi đổi sang 9 giờ ngày 6/6 đi.
+👤 [4] Thôi cho tôi đổi sang 9 giờ ngày 6/6 đi.
 ```
 
 **✅ Kỳ vọng tại bước [1]:** AI hỏi lại bệnh nhân đăng ký khám với bác sĩ nào / ngày nào.  
 **✅ Kỳ vọng tại bước [3]:** AI xác nhận bác sĩ Lê Sỹ Hùng bận ngày 5/6 và gợi ý ngày 6/6.  
-**✅ Kỳ vọng tại bước [6]:** AI chốt lịch thành công, trả về `booking_intent` với slot `09:00` ngày `2026-06-06`, doctor `doc_nhi_003`.
+**✅ Kỳ vọng tại bước [5]:** AI chốt lịch thành công, trả về `booking_intent` với slot `09:00` ngày `2026-06-06`, doctor `doc_nhi_003`.
 
 ---
 
