@@ -35,8 +35,6 @@
       {
         "date": "2026-06-05",
         "slots": [
-          "08:00",
-          "09:30",
           "14:00"
         ],
         "status": "available"
@@ -391,8 +389,7 @@
       {
         "date": "2026-06-06",
         "slots": [
-          "14:00",
-          "15:30"
+          "14:00"
         ],
         "status": "available"
       },
@@ -406,7 +403,7 @@
       }
     ]
   },
-{
+  {
     "id": "doc_hstc_001",
     "name": "PGS. TS. Đỗ Ngọc Sơn",
     "title": "Tiến sĩ",
@@ -415,13 +412,21 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "09:30", "11:00"],
+        "slots": [
+          "08:00",
+          "09:30",
+          "11:00"
+        ],
         "status": "busy",
         "reason": "Chủ trì hội chẩn ca bệnh ICU nguy kịch toàn viện"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "10:00", "14:30"],
+        "slots": [
+          "08:30",
+          "10:00",
+          "14:30"
+        ],
         "status": "available"
       }
     ]
@@ -435,12 +440,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "10:00", "14:00"],
+        "slots": [
+          "08:30",
+          "10:00",
+          "14:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "11:00"],
+        "slots": [
+          "09:00",
+          "11:00"
+        ],
         "status": "busy",
         "reason": "Giảng dạy đào tạo chuyên bồi dưỡng HSTC nâng cao"
       }
@@ -455,12 +467,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["09:00", "10:30", "15:00"],
+        "slots": [
+          "09:00",
+          "10:30",
+          "15:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "14:00"],
+        "slots": [
+          "08:30",
+          "14:00"
+        ],
         "status": "available"
       }
     ]
@@ -474,13 +493,20 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "10:00"],
+        "slots": [
+          "08:00",
+          "10:00"
+        ],
         "status": "busy",
         "reason": "Trực ca cấp cứu liên tục tại khu lọc máu đặc biệt"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "11:00", "15:30"],
+        "slots": [
+          "08:30",
+          "11:00",
+          "15:30"
+        ],
         "status": "available"
       }
     ]
@@ -494,12 +520,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "10:30", "14:30"],
+        "slots": [
+          "08:30",
+          "10:30",
+          "14:30"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:00", "09:30"],
+        "slots": [
+          "08:00",
+          "09:30"
+        ],
         "status": "available"
       }
     ]
@@ -513,12 +546,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "10:00", "15:00"],
+        "slots": [
+          "08:00",
+          "10:00",
+          "15:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "10:30"],
+        "slots": [
+          "09:00",
+          "10:30"
+        ],
         "status": "busy",
         "reason": "Hội đồng nghiên cứu khoa học lâm sàng"
       }
@@ -533,13 +573,20 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "10:00"],
+        "slots": [
+          "08:30",
+          "10:00"
+        ],
         "status": "busy",
         "reason": "Hỗ trợ kỹ thuật ECMO khẩn cấp"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "14:30", "16:00"],
+        "slots": [
+          "09:00",
+          "14:30",
+          "16:00"
+        ],
         "status": "available"
       }
     ]
@@ -553,12 +600,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "10:30", "14:00"],
+        "slots": [
+          "08:00",
+          "10:30",
+          "14:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "11:00"],
+        "slots": [
+          "09:00",
+          "11:00"
+        ],
         "status": "available"
       }
     ]
@@ -572,12 +626,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "13:30", "15:00"],
+        "slots": [
+          "08:30",
+          "13:30",
+          "15:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:00", "10:00"],
+        "slots": [
+          "08:00",
+          "10:00"
+        ],
         "status": "available"
       }
     ]
@@ -591,13 +652,21 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "09:30", "11:00"],
+        "slots": [
+          "08:00",
+          "09:30",
+          "11:00"
+        ],
         "status": "busy",
         "reason": "Theo dõi sát bệnh nhân thở máy khu cách ly"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "14:00", "15:30"],
+        "slots": [
+          "08:30",
+          "14:00",
+          "15:30"
+        ],
         "status": "available"
       }
     ]
@@ -611,12 +680,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["09:00", "10:30", "14:30"],
+        "slots": [
+          "09:00",
+          "10:30",
+          "14:30"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "15:00"],
+        "slots": [
+          "08:30",
+          "15:00"
+        ],
         "status": "available"
       }
     ]
@@ -630,18 +706,26 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "10:00", "14:00"],
+        "slots": [
+          "08:00",
+          "10:00",
+          "14:00"
+        ],
         "status": "busy",
         "reason": "Trực phòng hồi sức bệnh nhân ghép tạng sau phẫu thuật"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "10:30", "15:00"],
+        "slots": [
+          "08:30",
+          "10:30",
+          "15:00"
+        ],
         "status": "available"
       }
     ]
   },
-{
+  {
     "id": "doc_phcn_001",
     "name": "PGS. TS. Lương Tuấn Khanh",
     "title": "Tiến sĩ",
@@ -650,13 +734,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "10:00"],
+        "slots": [
+          "08:30",
+          "10:00"
+        ],
         "status": "busy",
         "reason": "Chủ trì cuộc họp nghiệm thu đề tài khoa học cấp Bộ"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "14:30"],
+        "slots": [
+          "09:00",
+          "14:30"
+        ],
         "status": "available"
       }
     ]
@@ -670,12 +760,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "09:30", "14:00"],
+        "slots": [
+          "08:00",
+          "09:30",
+          "14:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "10:30"],
+        "slots": [
+          "08:30",
+          "10:30"
+        ],
         "status": "busy",
         "reason": "Hội chẩn ca tai biến nặng cần phục hồi chức năng thần kinh"
       }
@@ -690,12 +787,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "10:00", "14:30"],
+        "slots": [
+          "08:30",
+          "10:00",
+          "14:30"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "11:00"],
+        "slots": [
+          "09:00",
+          "11:00"
+        ],
         "status": "available"
       }
     ]
@@ -709,13 +813,20 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "10:30"],
+        "slots": [
+          "08:00",
+          "10:30"
+        ],
         "status": "busy",
         "reason": "Đột xuất hỗ trợ tập vận động sớm cho bệnh nhân tại khu ICU"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "14:00", "15:30"],
+        "slots": [
+          "09:00",
+          "14:00",
+          "15:30"
+        ],
         "status": "available"
       }
     ]
@@ -729,12 +840,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "10:30", "15:00"],
+        "slots": [
+          "08:30",
+          "10:30",
+          "15:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:00", "09:30"],
+        "slots": [
+          "08:00",
+          "09:30"
+        ],
         "status": "available"
       }
     ]
@@ -748,12 +866,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "09:30", "14:00"],
+        "slots": [
+          "08:00",
+          "09:30",
+          "14:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["10:00", "15:00"],
+        "slots": [
+          "10:00",
+          "15:00"
+        ],
         "status": "busy",
         "reason": "Tham gia khóa đào tạo chuyên sâu Vật lý trị liệu quốc tế"
       }
@@ -768,13 +893,20 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["09:00", "11:00"],
+        "slots": [
+          "09:00",
+          "11:00"
+        ],
         "status": "busy",
         "reason": "Đi buồng và đánh giá tiến trình bệnh nhân nội trú"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "14:00", "16:00"],
+        "slots": [
+          "08:30",
+          "14:00",
+          "16:00"
+        ],
         "status": "available"
       }
     ]
@@ -788,12 +920,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "10:30", "14:30"],
+        "slots": [
+          "08:00",
+          "10:30",
+          "14:30"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "11:00"],
+        "slots": [
+          "09:00",
+          "11:00"
+        ],
         "status": "available"
       }
     ]
@@ -807,12 +946,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "13:30", "15:00"],
+        "slots": [
+          "08:30",
+          "13:30",
+          "15:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:00", "10:00"],
+        "slots": [
+          "08:00",
+          "10:00"
+        ],
         "status": "available"
       }
     ]
@@ -826,13 +972,21 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "09:30", "11:00"],
+        "slots": [
+          "08:00",
+          "09:30",
+          "11:00"
+        ],
         "status": "busy",
         "reason": "Trực phòng khám chức năng hô hấp đột xuất"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "14:00", "15:30"],
+        "slots": [
+          "08:30",
+          "14:00",
+          "15:30"
+        ],
         "status": "available"
       }
     ]
@@ -846,17 +1000,24 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["09:00", "10:30", "14:30"],
+        "slots": [
+          "09:00",
+          "10:30",
+          "14:30"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "15:00"],
+        "slots": [
+          "08:30",
+          "15:00"
+        ],
         "status": "available"
       }
     ]
   },
-{
+  {
     "id": "doc_cxk_001",
     "name": "PGS.TS. Nguyễn Văn Hùng",
     "title": "Tiến sĩ",
@@ -865,13 +1026,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "10:00"],
+        "slots": [
+          "08:30",
+          "10:00"
+        ],
         "status": "busy",
         "reason": "Chủ trì hội đồng khoa học nghiệm thu kỹ thuật can thiệp khớp mới"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "14:30"],
+        "slots": [
+          "09:00",
+          "14:30"
+        ],
         "status": "available"
       }
     ]
@@ -885,12 +1052,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "09:30", "14:00"],
+        "slots": [
+          "08:00",
+          "09:30",
+          "14:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "10:30"],
+        "slots": [
+          "08:30",
+          "10:30"
+        ],
         "status": "busy",
         "reason": "Hội chẩn ca bệnh viêm khớp tự miễn biến chứng nặng"
       }
@@ -905,12 +1079,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "10:00", "14:30"],
+        "slots": [
+          "08:30",
+          "10:00",
+          "14:30"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "11:00"],
+        "slots": [
+          "09:00",
+          "11:00"
+        ],
         "status": "available"
       }
     ]
@@ -924,13 +1105,20 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "10:30"],
+        "slots": [
+          "08:00",
+          "10:30"
+        ],
         "status": "busy",
         "reason": "Đi buồng và đánh giá tiến trình bệnh nhân điều trị sinh học chuyên sâu"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "14:00", "15:30"],
+        "slots": [
+          "09:00",
+          "14:00",
+          "15:30"
+        ],
         "status": "available"
       }
     ]
@@ -944,12 +1132,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "10:30", "15:00"],
+        "slots": [
+          "08:30",
+          "10:30",
+          "15:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:00", "09:30"],
+        "slots": [
+          "08:00",
+          "09:30"
+        ],
         "status": "available"
       }
     ]
@@ -963,12 +1158,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "09:30", "14:00"],
+        "slots": [
+          "08:00",
+          "09:30",
+          "14:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["10:00", "15:00"],
+        "slots": [
+          "10:00",
+          "15:00"
+        ],
         "status": "busy",
         "reason": "Tham gia báo cáo tại Hội nghị Thấp khớp học Quốc gia"
       }
@@ -983,13 +1185,20 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["09:00", "11:00"],
+        "slots": [
+          "09:00",
+          "11:00"
+        ],
         "status": "busy",
         "reason": "Trực phòng thủ thuật tiêm khớp và hút dịch khớp"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "14:00", "16:00"],
+        "slots": [
+          "08:30",
+          "14:00",
+          "16:00"
+        ],
         "status": "available"
       }
     ]
@@ -1003,12 +1212,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "10:30", "14:30"],
+        "slots": [
+          "08:00",
+          "10:30",
+          "14:30"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "11:00"],
+        "slots": [
+          "09:00",
+          "11:00"
+        ],
         "status": "available"
       }
     ]
@@ -1022,12 +1238,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "13:30", "15:00"],
+        "slots": [
+          "08:30",
+          "13:30",
+          "15:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:00", "10:00"],
+        "slots": [
+          "08:00",
+          "10:00"
+        ],
         "status": "busy",
         "reason": "Hội chẩn liên viện ca bệnh hệ thống phức tạp"
       }
@@ -1042,13 +1265,21 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "09:30", "11:00"],
+        "slots": [
+          "08:00",
+          "09:30",
+          "11:00"
+        ],
         "status": "busy",
         "reason": "Giảng dạy đào tạo lâm sàng học viên sau đại học"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "14:00", "15:30"],
+        "slots": [
+          "08:30",
+          "14:00",
+          "15:30"
+        ],
         "status": "available"
       }
     ]
@@ -1062,12 +1293,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["09:00", "10:30", "14:30"],
+        "slots": [
+          "09:00",
+          "10:30",
+          "14:30"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "15:00"],
+        "slots": [
+          "08:30",
+          "15:00"
+        ],
         "status": "available"
       }
     ]
@@ -1081,12 +1319,20 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "10:00", "14:00"],
+        "slots": [
+          "08:00",
+          "10:00",
+          "14:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "10:30", "15:00"],
+        "slots": [
+          "08:30",
+          "10:30",
+          "15:00"
+        ],
         "status": "available"
       }
     ]
@@ -1100,12 +1346,18 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "11:00"],
+        "slots": [
+          "08:30",
+          "11:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "14:00"],
+        "slots": [
+          "09:00",
+          "14:00"
+        ],
         "status": "busy",
         "reason": "Khám bệnh định kỳ tại Phòng khám theo yêu cầu"
       }
@@ -1120,12 +1372,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "10:00", "14:30"],
+        "slots": [
+          "08:00",
+          "10:00",
+          "14:30"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "13:30"],
+        "slots": [
+          "08:30",
+          "13:30"
+        ],
         "status": "available"
       }
     ]
@@ -1139,13 +1398,20 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "10:00"],
+        "slots": [
+          "08:30",
+          "10:00"
+        ],
         "status": "busy",
         "reason": "Trực đơn nguyên điều trị nội trú Thấp khớp cấp"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "14:00", "15:30"],
+        "slots": [
+          "09:00",
+          "14:00",
+          "15:30"
+        ],
         "status": "available"
       }
     ]
@@ -1159,12 +1425,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["09:00", "11:00", "15:00"],
+        "slots": [
+          "09:00",
+          "11:00",
+          "15:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:00", "10:30"],
+        "slots": [
+          "08:00",
+          "10:30"
+        ],
         "status": "available"
       }
     ]
@@ -1178,12 +1451,18 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "10:00"],
+        "slots": [
+          "08:00",
+          "10:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:30", "14:30"],
+        "slots": [
+          "09:30",
+          "14:30"
+        ],
         "status": "available"
       }
     ]
@@ -1197,13 +1476,20 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "14:00"],
+        "slots": [
+          "08:30",
+          "14:00"
+        ],
         "status": "busy",
         "reason": "Hỗ trợ kỹ thuật siêu âm can thiệp cơ xương khớp khu cấp cứu"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "11:00", "15:00"],
+        "slots": [
+          "09:00",
+          "11:00",
+          "15:00"
+        ],
         "status": "available"
       }
     ]
@@ -1217,12 +1503,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "10:30", "14:00"],
+        "slots": [
+          "08:00",
+          "10:30",
+          "14:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "15:30"],
+        "slots": [
+          "08:30",
+          "15:30"
+        ],
         "status": "available"
       }
     ]
@@ -1236,12 +1529,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["09:00", "14:00"],
+        "slots": [
+          "09:00",
+          "14:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:00", "10:00", "15:00"],
+        "slots": [
+          "08:00",
+          "10:00",
+          "15:00"
+        ],
         "status": "available"
       }
     ]
@@ -1255,12 +1555,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "10:00", "15:30"],
+        "slots": [
+          "08:30",
+          "10:00",
+          "15:30"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "11:00"],
+        "slots": [
+          "09:00",
+          "11:00"
+        ],
         "status": "available"
       }
     ]
@@ -1274,12 +1581,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "09:30", "14:00"],
+        "slots": [
+          "08:00",
+          "09:30",
+          "14:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "15:00"],
+        "slots": [
+          "08:30",
+          "15:00"
+        ],
         "status": "busy",
         "reason": "Tham gia hội đồng bình bệnh án mẫu của viện"
       }
@@ -1294,12 +1608,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["09:00", "10:30", "14:30"],
+        "slots": [
+          "09:00",
+          "10:30",
+          "14:30"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:30", "11:00"],
+        "slots": [
+          "08:30",
+          "11:00"
+        ],
         "status": "available"
       }
     ]
@@ -1313,13 +1634,20 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "10:00"],
+        "slots": [
+          "08:00",
+          "10:00"
+        ],
         "status": "busy",
         "reason": "Công tác điều phối hoạt động Đoàn thanh niên bệnh viện"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "14:30", "16:00"],
+        "slots": [
+          "09:00",
+          "14:30",
+          "16:00"
+        ],
         "status": "available"
       }
     ]
@@ -1333,12 +1661,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:30", "10:30", "14:00"],
+        "slots": [
+          "08:30",
+          "10:30",
+          "14:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["08:00", "09:30"],
+        "slots": [
+          "08:00",
+          "09:30"
+        ],
         "status": "available"
       }
     ]
@@ -1352,12 +1687,19 @@
     "schedule": [
       {
         "date": "2026-06-05",
-        "slots": ["08:00", "09:30", "14:00"],
+        "slots": [
+          "08:00",
+          "09:30",
+          "14:00"
+        ],
         "status": "available"
       },
       {
         "date": "2026-06-06",
-        "slots": ["09:00", "11:00"],
+        "slots": [
+          "09:00",
+          "11:00"
+        ],
         "status": "busy",
         "reason": "Hỗ trợ trực cấp cứu kỹ thuật cao khối Lâm sàng"
       }
