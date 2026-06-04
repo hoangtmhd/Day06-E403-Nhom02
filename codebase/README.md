@@ -22,7 +22,7 @@ codebase/
 │       ├── agent.py
 │       └── prompts/
 │           └── system_instruction.txt
-└── frontend/                  ← Thư mục Frontend (chờ thành viên khác cập nhật)
+└── frontend/                  ← Thư mục Giao diện Web (Nguyễn Quang Minh phụ trách)
     └── README.md              ← Hướng dẫn tích hợp cho nhóm Frontend
 ```
 

@@ -43,8 +43,11 @@ Day06-E403-Nhom02/
 │   ├── README.md           ← Hướng dẫn viết SPEC của ban tổ chức
 │   └── spec.md             ← Bản SPEC hoàn thiện của nhóm
 └── codebase/
-    ├── README.md           ← Hướng dẫn chạy code prototype
-    └── (Mã nguồn prototype sẽ được bổ sung tại đây)
+    ├── README.md           ← Hướng dẫn chạy code prototype tổng thể
+    ├── api_server.py       ← Server HTTP tích hợp phục vụ Web & API
+    ├── database/           ← Cơ sở dữ liệu Mock (Nguyễn Thế Giáp phụ trách)
+    ├── backend/            ← Backend AI FastAPI & logic LLM (Trần Minh Hoàng phụ trách)
+    └── frontend/           ← Giao diện Web động Bạch Mai Care (Nguyễn Quang Minh phụ trách)
 ```
 
 ---
