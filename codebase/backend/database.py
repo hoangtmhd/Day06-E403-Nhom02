@@ -53,12 +53,28 @@ def get_doctors_by_dept(department: str) -> list:
     """
     Tên hàm: get_doctors_by_dept
     Mô tả: Lọc danh sách các bác sĩ thuộc một chuyên khoa cụ thể.
-    Biến đầu vào: department (str) - Tên chuyên khoa cần lọc (ví dụ: "Tim mạch").
+           Hỗ trợ cả tên chuyên khoa gốc (có dấu) và dạng slug (không dấu, cách nhau bằng gạch ngang).
+    Biến đầu vào: department (str) - Tên chuyên khoa cần lọc (ví dụ: "Trung tâm Nhi khoa" hoặc "trung-tam-nhi-khoa").
     Cấu trúc đầu ra: list - Danh sách thông tin các bác sĩ thuộc khoa đó (dict).
-    Yêu cầu sử dụng: Tên chuyên khoa truyền vào phải khớp chính xác với dữ liệu trong database (có phân biệt hoa thường).
+    Yêu cầu sử dụng: Tên chuyên khoa truyền vào phải khớp với tên trong database hoặc định nghĩa slug.
     """
     data = load_data()
-    return [doc for doc in data if doc.get("department", "").lower() == department.lower()]
+    
+    # Bảng ánh xạ slug từ frontend sang tên chuyên khoa thực tế trong DB
+    dept_slug_map = {
+        "trung-tam-nhi-khoa": "Trung tâm Nhi khoa",
+        "da-lieu": "Da Liễu",
+        "ho-tro-sinh-san": "Hỗ trợ sinh sản",
+        "di-ung": "Dị Ứng - Miễn dịch",
+        "noi-co-xuong-khop": "Nội - Cơ Xương Khớp",
+        "noi-chong-doc": "Nội - Chống Độc",
+        "noi-ho-hap": "Nội - Hô Hấp",
+        "noi-huyet-hoc": "Nội - Huyết Học"
+    }
+    
+    mapped_dept = dept_slug_map.get(department.lower(), department)
+    return [doc for doc in data if doc.get("department", "").lower() == mapped_dept.lower()]
+
 
 
 def find_alternative_slots(doctor_name: str) -> list:

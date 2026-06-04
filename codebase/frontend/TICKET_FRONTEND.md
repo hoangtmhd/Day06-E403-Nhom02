@@ -10,10 +10,11 @@ Thêm chuyên khoa **Trung tâm Nhi khoa** vào danh sách các dropdown item đ
 
 ```html
 <!-- Chèn dòng này vào đầu khối <div class="dropdown-list"> ở dòng 92 -->
-<div class="dropdown-item" data-value="Trung tâm Nhi khoa">
+<div class="dropdown-item" data-value="trung-tam-nhi-khoa">
     <div class="item-title">Trung tâm Nhi khoa</div>
     <div class="item-desc"><span class="highlight">Triệu chứng:</span> KHÁM BỆNH CHO TRẺ EM, CÁC TRIỆU CHỨNG SỐT, HO, KHÒ KHÈ, SUY DINH DƯỠNG...</div>
 </div>
+
 ```
 
 ---
