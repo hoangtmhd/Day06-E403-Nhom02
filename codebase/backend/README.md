@@ -28,6 +28,11 @@ Thư mục này chứa mã nguồn Backend và mô phỏng tương tác (CLI Cha
     - **Đầu vào:** `doctor_name` (str) - Tên bác sĩ gốc bận, `date` (str) - Ngày đổi (YYYY-MM-DD).
     - **Đầu ra:** `list` danh sách bác sĩ tương đương kèm slot trống.
 
+*   **`find_lower_rank_doctors(doctor_name: str, date: str, max_results: int = 3) -> list`**
+  - **Mô tả:** Fallback gợi ý bác sĩ cùng khoa nhưng có chức danh thấp hơn bác sĩ gốc khi không còn phương án tương đương.
+  - **Đầu vào:** `doctor_name` (str), `date` (str), `max_results` (int, mặc định 3).
+  - **Đầu ra:** `list` bác sĩ thay thế khả dụng, sắp theo mức độ gần chức danh với bác sĩ gốc.
+
 *   **`book_appointment_slot(doctor_id: str, date: str, slot: str) -> dict`**
     - **Mô tả:** Đổi lịch khám bằng cách cập nhật slot trống thành bận (`busy`) trong cơ sở dữ liệu thời gian thực.
     - **Đầu vào:** `doctor_id` (str), `date` (str), `slot` (str).

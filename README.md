@@ -9,7 +9,7 @@
 | Mã học viên | Họ và tên | Vai trò trong nhóm |
 |---|---|---|
 | **2A202600700** | Trần Minh Hoàng | **Spec & AI Backend Developer** (Viết SPEC, thiết kế prompt, code logic kết nối LLM) |
-| **2A202600912** | Nguyễn Thế Giáp | **Research & Mock Data** (Khảo sát, thiết lập dữ liệu mẫu `doctors.json`) |
+| **2A202600912** | Nguyễn Thế Giáp | **Research, Mock Data, Support Backend Developer** (Khảo sát, thiết lập dữ liệu mẫu `doctors.json`) |
 | **2A202600994** | Nguyễn Quang Minh | **Frontend Developer** (Phát triển giao diện UI khung chat, thẻ UX fallback) |
 | **2A202600619** | Nguyễn Hữu Thái Minh | **QA Tester & Demo Coordinator** (Kiểm thử, viết kịch bản demo, chuẩn bị slide/video) |
 
