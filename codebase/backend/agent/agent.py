@@ -43,8 +43,17 @@ def get_chat_response(history: list, user_message: str) -> dict:
     doctors_data = load_data()
     db_context = "\n\n### CONTEXT DỮ LIỆU BÁC SĨ (REAL-TIME):\n" + json.dumps(doctors_data, ensure_ascii=False, indent=2)
     
-    # Kết hợp system instruction và dữ liệu DB thời gian thực
-    full_instruction = system_instruction_text + db_context
+    # 2.1 Thêm thông tin lịch hẹn bị sự cố của phiên bệnh nhân hiện tại để tránh AI đoán mò
+    appointment_context = (
+        "\n\n### THÔNG TIN LỊCH HẸN BỊ HỦY CỦA BỆNH NHÂN HIỆN TẠI:\n"
+        "- Bác sĩ đặt lịch ban đầu: PGS.TS. Nguyễn Văn A (ID: doc_001)\n"
+        "- Chuyên khoa: Tim mạch\n"
+        "- Ngày hẹn cũ: 2026-06-05\n"
+        "- Trạng thái: Bị hủy do bác sĩ bận lịch mổ đột xuất"
+    )
+    
+    # Kết hợp system instruction, dữ liệu DB thời gian thực và thông tin lịch hẹn hiện tại
+    full_instruction = system_instruction_text + db_context + appointment_context
 
     # 3. Khởi tạo model với cấu hình JSON output
     model = genai.GenerativeModel(
