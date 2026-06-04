@@ -24,6 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // DOM Elements
+    const infoMessageContainer = document.getElementById('info-message-container');
+    const doctorsContainer = document.getElementById('doctors-container');
+    const doctorsList = document.getElementById('doctors-list');
+
     // Handle item selection
     dropdownItems.forEach(item => {
         item.addEventListener('click', () => {
@@ -32,15 +37,34 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedText.style.color = '#333';
             dropdown.classList.remove('open');
 
-            // Update UI like before
-            infoMessage.innerHTML = `
-                <i class="fa-solid fa-check-circle" style="color: #2e7d32;"></i>
-                <p style="color: #2e7d32; font-weight: 500; font-size: 16px;">Đã chọn chuyên khoa: ${title}</p>
-                <p style="color: #666; font-size: 13px; margin-top: 5px;">Hệ thống sẽ tải danh sách Bác sĩ tương ứng... (sẽ lấy từ doctors.json)</p>
-            `;
+            // Hide info message and show doctors container
+            infoMessageContainer.style.display = 'none';
+            doctorsContainer.style.display = 'block';
+            doctorsList.innerHTML = `<p style="padding: 10px; color: #666;">Đang tải danh sách Bác sĩ từ file \`doctors.json\`...</p>`;
+
+            // Enable button
             btnContinue.disabled = false;
             btnContinue.classList.remove('btn-disabled');
             btnContinue.classList.add('btn-active');
+
+            // Fake fetch data for demonstration (because actual fetch('doctors.json') fails in file:// protocol without a local server)
+            setTimeout(() => {
+                doctorsList.innerHTML = `
+                    <div class="doctor-card">
+                        <div class="doctor-info">
+                            <div class="doctor-name">PGS.TS. Trần Thị B</div>
+                            <div class="doctor-role">Phó khoa ${title} - Bệnh viện Bạch Mai</div>
+                            <div class="doctor-schedule">
+                                <div class="schedule-day">Lịch khám gần nhất:</div>
+                                <button class="slot-btn">08:30</button>
+                                <button class="slot-btn">09:30</button>
+                                <button class="slot-btn">10:30</button>
+                                <button class="slot-btn">14:00</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }, 600);
         });
     });
 

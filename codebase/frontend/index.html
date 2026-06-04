@@ -159,9 +159,17 @@
                 </div>
 
                 <!-- Info Message -->
-                <div class="info-message">
+                <div class="info-message" id="info-message-container">
                     <i class="fa-solid fa-circle-info"></i>
                     <p>Vui lòng chọn chuyên khoa để xem lịch khám</p>
+                </div>
+
+                <!-- Doctors List (Hidden default) -->
+                <div class="doctors-container" id="doctors-container" style="display: none;">
+                    <h3 class="section-subtitle">Danh sách Bác sĩ</h3>
+                    <div class="doctors-list" id="doctors-list">
+                        <!-- Bác sĩ sẽ được load từ file json bằng JS -->
+                    </div>
                 </div>
 
                 <!-- Action Button -->
