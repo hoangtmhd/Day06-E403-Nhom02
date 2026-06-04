@@ -79,7 +79,7 @@ Dữ liệu lịch khám chính thức được lưu và đẩy trực tiếp l�
 
 ## 📋 Feedback Log (Learning Signals)
 
-File `database/feedback_logs.json` được tự động tạo và cập nhật mỗi khi có giao dịch đổi lịch. File này **không được commit lên Git** (đã thêm vào `.gitignore`).
+File `database/feedback_logs.json` được tự động tạo và cập nhật mỗi khi có giao dịch đổi lịch.
 
 ### Cấu trúc mỗi entry log
 
