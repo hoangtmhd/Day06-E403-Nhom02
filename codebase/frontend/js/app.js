@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             const slotDataStr = encodeURIComponent(JSON.stringify({
                                 doctor_id: doctor.id,
                                 doctor_name: doctor.name,
+                                department: doctor.department || 'Bệnh viện Bạch Mai',
                                 date: day.date,
                                 slot: slot
                             }));
@@ -209,6 +210,20 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             const data = await response.json();
             if (data.success) {
+                // Save to localStorage
+                const appointments = JSON.parse(localStorage.getItem('myAppointments') || '[]');
+                const newAppt = {
+                    id: 'A' + new Date().getFullYear() + Math.random().toString().slice(2, 8),
+                    doctor_name: window.selectedAppointment.doctor_name,
+                    department: window.selectedAppointment.department,
+                    date: window.selectedAppointment.date,
+                    slot: window.selectedAppointment.slot,
+                    status: 'Đã xác nhận',
+                    timestamp: new Date().toLocaleString('vi-VN')
+                };
+                appointments.push(newAppt);
+                localStorage.setItem('myAppointments', JSON.stringify(appointments));
+
                 alert("Thành công: " + data.message);
                 location.reload();
             } else {

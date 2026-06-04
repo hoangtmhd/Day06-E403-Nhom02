@@ -117,3 +117,24 @@ cat ..\..\database\feedback_logs.json
 # Đếm số lần booking thành công
 (Get-Content ..\..\database\feedback_logs.json | ConvertFrom-Json) | Where-Object { $_.user_action -eq "confirmed" } | Measure-Object | Select-Object Count
 ```
+
+---
+
+## 🎨 Hướng dẫn chạy Giao diện (Frontend)
+Dự án đã tích hợp sẵn một Web Server bằng Python để chạy đồng thời cả API và giao diện tĩnh (HTML/CSS/JS).
+
+1. Mở Terminal / Command Prompt tại thư mục gốc `codebase/`:
+   ```bash
+   cd codebase
+   python api_server.py
+   ```
+2. Mở trình duyệt web và truy cập vào: [http://localhost:8080/frontend/index.html](http://localhost:8080/frontend/index.html)
+   *(Lưu ý: API server mặc định chạy ở cổng `8080`)*
+
+**Hoặc nếu chỉ muốn chạy riêng file tĩnh (không dùng API):**
+1. Mở Terminal tại thư mục `codebase/`:
+   ```bash
+   cd codebase
+   python -m http.server 8000
+   ```
+2. Truy cập trình duyệt: [http://localhost:8000/frontend/index.html](http://localhost:8000/frontend/index.html)
