@@ -11,6 +11,14 @@ Thư mục `codebase/database/` lưu dữ liệu JSON phục vụ cho luồng de
 - Lưu log hành vi người dùng khi xác nhận đổi lịch hoặc hoàn tác.
 - Hỗ trợ backup để khôi phục nhanh dữ liệu ban đầu khi test/demo.
 
+# Các chuyên khoa đang có
+```
+1. Trung tâm Nhi khoa
+2. Trung tâm Hồi sức tích cực
+3. Viện Phục hồi chức năng Bạch Mai
+4. Viện Cơ Xương Khớp Bạch Mai
+```
+
 ## Các file trong thư mục
 
 ### 1) `doctors.json`
