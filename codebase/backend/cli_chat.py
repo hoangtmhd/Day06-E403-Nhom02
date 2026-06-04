@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BACKEND_DIR)
 
-from database import load_data, book_appointment_slot, cancel_appointment_slot, log_feedback
+from database import load_data, book_appointment_slot, undo_appointment_slot, log_feedback
 from agent.agent import get_chat_response
 
 # Load file .env
@@ -89,7 +89,7 @@ def main():
                 undo_date = last_booking["date"]
                 undo_slot = last_booking["slot"]
                 print(f"↩️ Đang hoàn tác lịch khám {undo_slot} ngày {undo_date} của bác sĩ {undo_doc_id}...")
-                undo_result = cancel_appointment_slot(undo_doc_id, undo_date, undo_slot)
+                undo_result = undo_appointment_slot(undo_doc_id, undo_date, undo_slot)
                 if undo_result["success"]:
                     print(f"✅ HOÀN TÁC THÀNH CÔNG: {undo_result['message']}")
                     log_feedback(

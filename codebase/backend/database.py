@@ -291,9 +291,9 @@ def book_appointment_slot(doctor_id: str, date: str, slot: str) -> dict:
     return {"success": False, "message": f"Bác sĩ không có lịch trực vào ngày {date}."}
 
 
-def cancel_appointment_slot(doctor_id: str, date: str, slot: str) -> dict:
+def undo_appointment_slot(doctor_id: str, date: str, slot: str) -> dict:
     """
-    Tên hàm: cancel_appointment_slot
+    Tên hàm: undo_appointment_slot
     Mô tả: Hoàn tác (Undo) lịch khám đã đặt. Khôi phục slot giờ khám về danh sách trống
            và đặt lại trạng thái "available" cho ngày đó.
     Biến đầu vào:
@@ -395,6 +395,6 @@ def log_feedback(
         return False
 
 
-# Alias để tương thích với FastAPI server.py
-undo_appointment_slot = cancel_appointment_slot
+# Alias để tương thích ngược với mã nguồn dùng cancel_appointment_slot
+cancel_appointment_slot = undo_appointment_slot
 
