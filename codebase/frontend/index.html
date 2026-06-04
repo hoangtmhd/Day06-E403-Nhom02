@@ -127,6 +127,26 @@
                     </div>
                 </div>
 
+                <!-- Doctor Name Search -->
+                <div class="form-group">
+                    <label>Hoặc tìm theo tên bác sĩ / chuyên khoa:</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="doctor-search-box" placeholder="Nhập tên bác sĩ hoặc chuyên khoa (VD: Nguyễn Thành Nam, Nhi khoa)" style="flex: 1; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 6px; outline: none; font-size: 14px;">
+                        <button id="btn-search-doctor" style="padding: 12px 25px; background: var(--primary-color); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px;">Tìm kiếm</button>
+                    </div>
+                </div>
+
+                <!-- Equivalent Doctor Search -->
+                <div class="form-group" style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed #ccc;">
+                    <label style="color: #d4af37;"><i class="fa-solid fa-user-doctor"></i> Tìm bác sĩ thay thế tương đương:</label>
+                    <p style="font-size: 13px; color: #666; margin-bottom: 10px;">Dùng khi bác sĩ mong muốn bị bận lịch, hệ thống sẽ gợi ý bác sĩ cùng khoa, cùng hàm/vị trí.</p>
+                    <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <input type="text" id="equiv-doctor-name" placeholder="Tên bác sĩ gốc (VD: Nguyễn Thành Nam)" style="flex: 2; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 6px; outline: none; font-size: 14px;">
+                        <input type="date" id="equiv-doctor-date" style="flex: 1; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 6px; outline: none; font-size: 14px;">
+                    </div>
+                    <button id="btn-search-equiv" style="width: 100%; padding: 12px 25px; background: #2c3e50; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px;">Tìm bác sĩ thay thế</button>
+                </div>
+
                 <!-- Date Select -->
                 <div class="form-group date-group">
                     <label>Chọn ngày khám</label>
@@ -225,6 +245,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/app.js"></script>
+    <script src="js/app.js?v=6"></script>
 </body>
 </html>

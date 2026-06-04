@@ -29,6 +29,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const doctorsContainer = document.getElementById('doctors-container');
     const doctorsList = document.getElementById('doctors-list');
 
+    // Render function
+    const renderDoctors = (data) => {
+        if (data.length === 0) {
+            doctorsList.innerHTML = `<p style="padding: 10px; color: #666;">Không tìm thấy bác sĩ nào.</p>`;
+            return;
+        }
+
+        let html = '';
+        data.forEach(doctor => {
+            let slotsHtml = '';
+            if (doctor.schedule && doctor.schedule.length > 0) {
+                doctor.schedule.forEach(day => {
+                    if (day.status === 'available' && day.slots && day.slots.length > 0) {
+                        slotsHtml += `<div class="schedule-day">Ngày ${day.date}:</div>`;
+                        day.slots.forEach(slot => {
+                            const slotDataStr = encodeURIComponent(JSON.stringify({
+                                doctor_id: doctor.id,
+                                doctor_name: doctor.name,
+                                date: day.date,
+                                slot: slot
+                            }));
+                            slotsHtml += `<button class="slot-btn" onclick="window.selectSlot(this, '${slotDataStr}')">${slot}</button>`;
+                        });
+                    }
+                });
+            }
+            if (!slotsHtml) {
+                slotsHtml = `<div class="schedule-day">Hiện tại bác sĩ đã kín lịch.</div>`;
+            }
+
+            html += `
+                <div class="doctor-card">
+                    <div class="doctor-info">
+                        <div class="doctor-name">${doctor.name}</div>
+                        <div class="doctor-role">${doctor.title} - ${doctor.role}</div>
+                        <div class="doctor-schedule">
+                            ${slotsHtml}
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        doctorsList.innerHTML = html;
+    };
+
     // Handle item selection
     dropdownItems.forEach(item => {
         item.addEventListener('click', () => {
@@ -37,63 +82,154 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedText.style.color = '#333';
             dropdown.classList.remove('open');
 
-            // Hide info message and show doctors container
             infoMessageContainer.style.display = 'none';
             doctorsContainer.style.display = 'block';
             doctorsList.innerHTML = `<p style="padding: 10px; color: #666;">Đang tải danh sách Bác sĩ từ file \`doctors.json\`...</p>`;
 
-            // Enable button
             btnContinue.disabled = false;
             btnContinue.classList.remove('btn-disabled');
             btnContinue.classList.add('btn-active');
 
-            // Real fetch data from backend API
             fetch('/api/doctors?department=' + encodeURIComponent(title))
                 .then(response => response.json())
-                .then(data => {
-                    if (data.length === 0) {
-                        doctorsList.innerHTML = `<p style="padding: 10px; color: #666;">Không có bác sĩ nào cho chuyên khoa này.</p>`;
-                        return;
-                    }
-
-                    let html = '';
-                    data.forEach(doctor => {
-                        let slotsHtml = '';
-                        if (doctor.schedule && doctor.schedule.length > 0) {
-                            // Render available slots
-                            doctor.schedule.forEach(day => {
-                                const availableSlots = day.slots.filter(s => s.status === 'available');
-                                if (availableSlots.length > 0) {
-                                    slotsHtml += `<div class="schedule-day">Ngày ${day.date}:</div>`;
-                                    availableSlots.forEach(slot => {
-                                        slotsHtml += `<button class="slot-btn" onclick="alert('Đã chọn khung giờ ${slot.time} ngày ${day.date} của bác sĩ ${doctor.doctor_name}')">${slot.time}</button>`;
-                                    });
-                                }
-                            });
-                        }
-                        if (!slotsHtml) {
-                            slotsHtml = `<div class="schedule-day">Hiện tại bác sĩ đã kín lịch.</div>`;
-                        }
-
-                        html += `
-                            <div class="doctor-card">
-                                <div class="doctor-info">
-                                    <div class="doctor-name">${doctor.doctor_name}</div>
-                                    <div class="doctor-role">${doctor.degree} - Khoa ${doctor.department}</div>
-                                    <div class="doctor-schedule">
-                                        ${slotsHtml}
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    });
-                    doctorsList.innerHTML = html;
-                })
+                .then(data => renderDoctors(data))
                 .catch(err => {
                     doctorsList.innerHTML = `<p style="padding: 10px; color: red;">Lỗi khi tải danh sách Bác sĩ: ${err.message}</p>`;
                 });
         });
     });
+
+    // Handle Doctor Search
+    const searchDoctorBtn = document.getElementById('btn-search-doctor');
+    const doctorSearchBox = document.getElementById('doctor-search-box');
+    if (searchDoctorBtn && doctorSearchBox) {
+        searchDoctorBtn.addEventListener('click', () => {
+            const query = doctorSearchBox.value.trim();
+            if (!query) {
+                alert('Vui lòng nhập tên bác sĩ cần tìm!');
+                return;
+            }
+            
+            // Clear dropdown selection
+            selectedText.textContent = '- Chọn chuyên khoa -';
+            selectedText.style.color = '';
+
+            infoMessageContainer.style.display = 'none';
+            doctorsContainer.style.display = 'block';
+            doctorsList.innerHTML = `<p style="padding: 10px; color: #666;">Đang tìm kiếm bác sĩ...</p>`;
+
+            btnContinue.disabled = false;
+            btnContinue.classList.remove('btn-disabled');
+            btnContinue.classList.add('btn-active');
+
+            fetch('/api/search?q=' + encodeURIComponent(query))
+                .then(response => response.json())
+                .then(data => renderDoctors(data))
+                .catch(err => {
+                    doctorsList.innerHTML = `<p style="padding: 10px; color: red;">Lỗi khi tải danh sách Bác sĩ: ${err.message}</p>`;
+                });
+        });
+        
+        doctorSearchBox.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchDoctorBtn.click();
+            }
+        });
+    }
+
+    // Handle Equivalent Doctor Search
+    const searchEquivBtn = document.getElementById('btn-search-equiv');
+    const equivDoctorName = document.getElementById('equiv-doctor-name');
+    const equivDoctorDate = document.getElementById('equiv-doctor-date');
+    if (searchEquivBtn && equivDoctorName && equivDoctorDate) {
+        searchEquivBtn.addEventListener('click', () => {
+            const docName = equivDoctorName.value.trim();
+            const docDate = equivDoctorDate.value;
+            if (!docName || !docDate) {
+                alert('Vui lòng nhập tên bác sĩ gốc và chọn ngày khám!');
+                return;
+            }
+
+            // Clear dropdown selection
+            selectedText.textContent = '- Chọn chuyên khoa -';
+            selectedText.style.color = '';
+
+            infoMessageContainer.style.display = 'none';
+            doctorsContainer.style.display = 'block';
+            doctorsList.innerHTML = `<p style="padding: 10px; color: #666;">Đang tìm kiếm bác sĩ tương đương...</p>`;
+
+            btnContinue.disabled = false;
+            btnContinue.classList.remove('btn-disabled');
+            btnContinue.classList.add('btn-active');
+
+            fetch(`/api/equivalent?doctor=${encodeURIComponent(docName)}&date=${encodeURIComponent(docDate)}`)
+                .then(response => response.json())
+                .then(data => {
+                    // The API returns doctors with ONLY the schedule for that specific date.
+                    // But our renderDoctors expects an array of doctors, which is fine since the API returns
+                    // [{id, name, title, role, date, slots: []}]. Wait, the format is slightly different!
+                    // find_equivalent_doctors returns: 
+                    // [{"id": doc.get("id"), "name": doc.get("name"), "title": doc.get("title"), "role": doc.get("role"), "date": date, "slots": sched.get("slots", [])}]
+                    // So we need to map it to match our renderDoctors expected format:
+                    // [{id, name, title, role, schedule: [{date, status: 'available', slots: []}]}]
+                    const mappedData = data.map(d => ({
+                        id: d.id,
+                        name: d.name,
+                        title: d.title,
+                        role: d.role,
+                        schedule: [{
+                            date: d.date,
+                            status: 'available',
+                            slots: d.slots
+                        }]
+                    }));
+                    renderDoctors(mappedData);
+                })
+                .catch(err => {
+                    doctorsList.innerHTML = `<p style="padding: 10px; color: red;">Lỗi khi tải danh sách Bác sĩ: ${err.message}</p>`;
+                });
+        });
+    }
+
+    // Handle continue button
+    btnContinue.addEventListener('click', async () => {
+        if (!window.selectedAppointment) {
+            alert("Vui lòng chọn khung giờ trước khi tiếp tục!");
+            return;
+        }
+        try {
+            const response = await fetch('/api/book', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    doctor_id: window.selectedAppointment.doctor_id,
+                    date: window.selectedAppointment.date,
+                    slot: window.selectedAppointment.slot
+                })
+            });
+            const data = await response.json();
+            if (data.success) {
+                alert("Thành công: " + data.message);
+                location.reload();
+            } else {
+                alert("Lỗi: " + data.message + "\n\nXin hãy mở Chatbot (góc phải dưới) để hỏi lịch hoặc bác sĩ khác!");
+                const chatbotBubble = document.getElementById('chatbot-bubble');
+                if (chatbotBubble) chatbotBubble.click();
+            }
+        } catch (err) {
+            alert("Lỗi mạng khi đặt lịch.");
+        }
+    });
+
+    // Global slot selection function
+    window.selectedAppointment = null;
+    window.selectSlot = function(btnElem, dataStr) {
+        document.querySelectorAll('.slot-btn').forEach(btn => btn.style.background = '');
+        document.querySelectorAll('.slot-btn').forEach(btn => btn.style.color = '');
+        btnElem.style.background = '#d4af37';
+        btnElem.style.color = '#fff';
+        window.selectedAppointment = JSON.parse(decodeURIComponent(dataStr));
+    };
 
     // Search filter
     searchInput.addEventListener('input', (e) => {
@@ -199,10 +335,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     parts: [JSON.stringify({reply: data.reply, booking_intent: data.booking_intent})]
                 });
 
+                const cleanReply = data.reply.replace(/\*\*/g, '');
                 const aiMsgHTML = `
                     <div class="message ai-message">
                         <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
-                        <div class="msg-bubble">${data.reply}</div>
+                        <div class="msg-bubble">${cleanReply}</div>
                     </div>
                 `;
                 chatMessages.insertAdjacentHTML('beforeend', aiMsgHTML);
