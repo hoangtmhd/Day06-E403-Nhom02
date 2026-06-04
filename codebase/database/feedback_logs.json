@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": "2026-06-04T04:58:25Z",
+    "original_request": {
+      "doctor_id": "doc_nhi_003",
+      "date": "2026-06-05"
+    },
+    "ai_recommendation": {
+      "suggested_doctor_id": "doc_nhi_002",
+      "suggested_date": "2026-06-05",
+      "suggested_slot": "08:00"
+    },
+    "user_action": "confirmed",
+    "actual_selected_doctor_id": "doc_nhi_002"
+  },
+  {
+    "timestamp": "2026-06-04T04:58:30Z",
+    "original_request": {
+      "doctor_id": "doc_nhi_003",
+      "date": "2026-06-05"
+    },
+    "ai_recommendation": {
+      "suggested_doctor_id": "doc_nhi_002",
+      "suggested_date": "2026-06-05",
+      "suggested_slot": "08:00"
+    },
+    "user_action": "undo",
+    "actual_selected_doctor_id": null
+  },
+  {
+    "timestamp": "2026-06-04T05:33:17Z",
+    "original_request": {
+      "doctor_id": "doc_nhi_003",
+      "date": "2026-06-05"
+    },
+    "ai_recommendation": {
+      "suggested_doctor_id": "doc_nhi_004",
+      "suggested_date": "2026-06-05",
+      "suggested_slot": "09:00"
+    },
+    "user_action": "confirmed",
+    "actual_selected_doctor_id": "doc_nhi_004"
+  }
+]
