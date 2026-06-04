@@ -46,10 +46,10 @@ def get_chat_response(history: list, user_message: str) -> dict:
     # 2.1 Thêm thông tin lịch hẹn bị sự cố của phiên bệnh nhân hiện tại để tránh AI đoán mò
     appointment_context = (
         "\n\n### THÔNG TIN LỊCH HẸN BỊ HỦY CỦA BỆNH NHÂN HIỆN TẠI:\n"
-        "- Bác sĩ đặt lịch ban đầu: PGS.TS. Nguyễn Văn A (ID: doc_001)\n"
-        "- Chuyên khoa: Tim mạch\n"
+        "- Bác sĩ đặt lịch ban đầu: BSCKII. Lê Sỹ Hùng (ID: doc_nhi_003)\n"
+        "- Chuyên khoa: Trung tâm Nhi khoa\n"
         "- Ngày hẹn cũ: 2026-06-05\n"
-        "- Trạng thái: Bị hủy do bác sĩ bận lịch mổ đột xuất"
+        "- Trạng thái: Bị hủy do bác sĩ bận Hội chẩn ca bệnh Nhi khoa nguy kịch"
     )
     
     # Kết hợp system instruction, dữ liệu DB thời gian thực và thông tin lịch hẹn hiện tại
