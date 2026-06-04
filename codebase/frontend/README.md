@@ -13,7 +13,7 @@ Vì dự án có chứa mã Javascript gọi tới file API nội bộ, bạn **
 
 ### Cách 1: Chạy chung với API Server của Backend (Khuyên dùng)
 Dự án đã tích hợp sẵn một máy chủ Python phục vụ cả API (`/api/...`) và giao diện tĩnh (serve file trong thư mục).
-1. Mở Terminal / Command Prompt tại thư mục gốc của dự án (`Day06-E403-Nhom02-main`).
+1. Mở Terminal / Command Prompt tại thư mục gốc của dự án (`Day06-E403-NhomC2`).
 2. Khởi chạy server bằng lệnh:
    ```bash
    python codebase/api_server.py

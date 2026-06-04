@@ -1,5 +1,5 @@
 # SPEC SẢN PHẨM: TRỢ LÝ TƯ VẤN ĐỔI LỊCH KHÁM - BẠCH MAI CARE
-**Nhóm:** Thanh niên áo hồng (Nhóm 02 - E403)  
+**Nhóm:** Thanh niên áo hồng (Nhóm C2 - E403)  
 **Dự án:** Trợ lý AI xử lý sự cố hết/bận lịch khám bác sĩ đích danh tại Bạch Mai Care  
 
 ---

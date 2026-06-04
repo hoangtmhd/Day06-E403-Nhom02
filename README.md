@@ -1,6 +1,6 @@
-# Bạch Mai Care - Trợ lý AI Tư vấn Đổi lịch Khám (Nhóm 02 - E403)
+# Bạch Mai Care - Trợ lý AI Tư vấn Đổi lịch Khám (Nhóm C2 - E403)
 
-Đây là repository của **Nhóm 02 (Thanh niên áo hồng)** lớp E403 cho buổi AI Product Hackathon - Day 06.
+Đây là repository của **Nhóm C2 (Thanh niên áo hồng)** lớp E403 cho buổi AI Product Hackathon - Day 06.
 
 ---
 
@@ -32,7 +32,7 @@ Trợ lý AI tích hợp trong khung chat giúp:
 ## 📂 Cấu trúc Repository
 
 ```text
-Day06-E403-Nhom02/
+Day06-E403-NhomC2/
 ├── README.md               ← Tài liệu giới thiệu nhóm và sản phẩm (File này)
 ├── docs/
 │   ├── members.md          ← Danh sách thành viên và vai trò & bằng chứng đóng góp
@@ -92,7 +92,7 @@ Bản prototype hiện được cấu hình chạy offline trên local (localhos
    - Tạo file `.env` từ `.env.example` trong thư mục `codebase/backend/` và điền `GEMINI_API_KEY` của bạn.
 
 2. **Khởi chạy máy chủ tích hợp (cả API và Frontend):**
-   - Mở Terminal tại thư mục gốc của dự án (`Day06-E403-Nhom02/`) và chạy:
+   - Mở Terminal tại thư mục gốc của dự án (`Day06-E403-NhomC2/`) và chạy:
      ```bash
      python codebase/api_server.py
      ```
