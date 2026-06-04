@@ -1,6 +1,6 @@
 # Evidence Pack — Nhóm Thanh niên áo hồng
 
-Cung cấp các bằng chứng thực tế và nghiên cứu người dùng cho bài tập Day 05.
+Cung cấp các bằng chứng thực tế và nghiên cứu người dùng cho bài tập Day 06.
 
 ---
 
