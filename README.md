@@ -23,7 +23,7 @@ Bệnh nhân đặt khám theo yêu cầu với bác sĩ đích danh tại ứng
 ### 🟢 Giải pháp (Solution)
 Trợ lý AI tích hợp trong khung chat giúp:
 1. Chủ động thông báo lịch bận của bác sĩ cũ.
-2. Tự động đề xuất lịch khám trống gần nhất của bác sĩ đó **HOẶC** giới thiệu 2-3 bác sĩ tương đương cùng chuyên khoa/chức vụ/học hàm đang có lịch trống.
+2. Tự động đề xuất lịch khám trống gần nhất của bác sĩ đó **HOẶC** giới thiệu 2-3 bác sĩ tương đương cùng chuyên khoa/chức vụ/chức danh đang có lịch trống.
 3. Người dùng có thể click xác nhận đổi lịch nhanh trực tiếp trên giao diện chat.
 4. **UX Fallback (Human-in-the-loop):** Nếu xảy ra lỗi đồng bộ dữ liệu thời gian thực hoặc không tìm được bác sĩ phù hợp, hệ thống hiển thị thẻ UX chứa nút kết nối trực tiếp đến tổng đài hỗ trợ để được nhân viên gọi điện tư vấn.
 
