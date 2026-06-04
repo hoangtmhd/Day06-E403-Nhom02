@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch sử đặt lịch khám - Bệnh viện Bạch Mai</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body style="background-color: #f5f5f5;">
+    <!-- HEADER -->
+    <header class="desktop-header" style="background-color: white;">
+        <div class="header-container">
+            <!-- Left: Logo -->
+            <div class="header-logo">
+                <i class="fa-solid fa-staff-snake logo-icon"></i>
+                <div class="logo-text">
+                    <h1>BỆNH VIỆN BẠCH MAI</h1>
+                    <h2>BACH MAI HOSPITAL</h2>
+                </div>
+            </div>
+            
+            <!-- Middle: Slogan -->
+            <div class="header-slogan">
+                <span>Vì sức khoẻ nhân dân</span>
+            </div>
+
+            <!-- Right: Info -->
+            <div class="header-info">
+                <div class="info-top">
+                    <span class="phone"><i class="fa-solid fa-phone"></i> 1900.888.866</span>
+                    <span class="user-greeting">Xin chào, Nguyễn Quang Minh</span>
+                    <a href="#" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>
+                    <div class="lang-switch">VN</div>
+                </div>
+                <div class="info-bottom">
+                    <i class="fa-solid fa-location-dot"></i> Số 78, đường Giải Phóng, phường Kim Liên, thành phố Hà Nội
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION MENU -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="#">CỔNG THÔNG TIN</a>
+            <a href="#">ĐỘI NGŨ BÁC SĨ</a>
+            <a href="index.html">ĐẶT LỊCH KHÁM</a>
+            <a href="appointments.html" class="active">XEM LỊCH KHÁM</a>
+            <a href="#">CÁ NHÂN <i class="fa-solid fa-chevron-down"></i></a>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="profile-main">
+        <div class="profile-container">
+            
+            <!-- Sidebar -->
+            <div class="profile-sidebar">
+                <h3 class="sidebar-title">Thông tin cá nhân</h3>
+                
+                <div class="user-profile-card">
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                    <div class="user-details">
+                        <div class="user-name">Nguyễn Quang Minh</div>
+                        <div class="user-meta">Nam, 11/09/2000</div>
+                    </div>
+                </div>
+
+                <ul class="sidebar-menu">
+                    <li><a href="#"><i class="fa-solid fa-user"></i> Hồ sơ cá nhân</a></li>
+                    <li><a href="#"><i class="fa-solid fa-users"></i> Quản lý gia đình</a></li>
+                    <li><a href="#" class="active"><i class="fa-solid fa-calendar-check"></i> Lịch sử đặt lịch khám</a></li>
+                    <li><a href="#"><i class="fa-solid fa-file-medical"></i> Kết quả khám bệnh</a></li>
+                    <li><a href="#"><i class="fa-solid fa-pills"></i> Đơn thuốc</a></li>
+                    <li><a href="#"><i class="fa-solid fa-calendar-plus"></i> Lịch hẹn khám lại</a></li>
+                    <li><a href="#"><i class="fa-solid fa-user-doctor"></i> Bác sĩ của tôi</a></li>
+                    <li><a href="#"><i class="fa-solid fa-file-export"></i> Giấy chuyển tuyến</a></li>
+                    <li><a href="#"><i class="fa-solid fa-shield-heart"></i> Bảo hiểm y tế</a></li>
+                </ul>
+            </div>
+
+            <!-- Content Area -->
+            <div class="profile-content">
+                <div class="content-header">
+                    <div class="header-text">
+                        <h2>Lịch sử đặt lịch khám bệnh</h2>
+                        <p>Xem chi tiết các lịch hẹn khám bệnh đã đặt, thông tin chuyên khoa, bác sĩ và trạng thái đặt lịch.</p>
+                    </div>
+                    <!-- Optional: banner image here -->
+                </div>
+
+                <!-- Appointment Card -->
+                <div class="appointment-card">
+                    <div class="app-info">
+                        <div class="app-row"><strong>Chuyên khoa:</strong> <span>Trung tâm Cơ Xương Khớp</span></div>
+                        <div class="app-row"><strong>Bệnh viện:</strong> <span>BỆNH VIỆN BẠCH MAI</span></div>
+                        <div class="app-row"><strong>Phòng khám:</strong> <span>PK Cơ Xương Khớp (P.426 Nhà K1)</span></div>
+                        <div class="app-row"><strong>Mã đặt lịch:</strong> <span>A2026C604-001434</span></div>
+                        <div class="app-row"><strong>Trạng thái:</strong> <span class="status-confirmed">Đã xác nhận</span></div>
+                    </div>
+                    <div class="app-actions">
+                        <button class="btn-detail">Xem chi tiết</button>
+                        <div class="app-time"><i class="fa-regular fa-clock"></i> 07:07:02 04/06/2026</div>
+                    </div>
+                </div>
+
+                <!-- Example of another card (Optional) -->
+                <div class="appointment-card">
+                    <div class="app-info">
+                        <div class="app-row"><strong>Chuyên khoa:</strong> <span>Trung tâm Nhi khoa</span></div>
+                        <div class="app-row"><strong>Bệnh viện:</strong> <span>BỆNH VIỆN BẠCH MAI</span></div>
+                        <div class="app-row"><strong>Bác sĩ:</strong> <span>TS.BS. Nguyễn Thành Nam</span></div>
+                        <div class="app-row"><strong>Mã đặt lịch:</strong> <span>A2026C605-001552</span></div>
+                        <div class="app-row"><strong>Trạng thái:</strong> <span class="status-confirmed">Đã xác nhận</span></div>
+                    </div>
+                    <div class="app-actions">
+                        <button class="btn-detail">Xem chi tiết</button>
+                        <div class="app-time"><i class="fa-regular fa-clock"></i> 08:30:00 05/06/2026</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="desktop-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <i class="fa-solid fa-staff-snake footer-logo"></i>
+            </div>
+            <div class="footer-right">
+                LIÊN KẾT VỚI CHÚNG TÔI
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

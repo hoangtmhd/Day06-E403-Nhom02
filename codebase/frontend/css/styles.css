@@ -645,3 +645,189 @@ body {
     0%, 80%, 100% { transform: scale(0); }
     40% { transform: scale(1); }
 }
+
+/* Profile Page Layout */
+.profile-main {
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.profile-container {
+    display: flex;
+    gap: 30px;
+}
+
+/* Sidebar */
+.profile-sidebar {
+    width: 280px;
+    background: transparent;
+}
+
+.sidebar-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.user-profile-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.user-profile-card .avatar {
+    width: 45px;
+    height: 45px;
+    background: #666;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.user-profile-card .user-name {
+    font-weight: bold;
+    font-size: 15px;
+    color: #333;
+}
+
+.user-profile-card .user-meta {
+    font-size: 13px;
+    color: #666;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin-bottom: 5px;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.sidebar-menu a i {
+    width: 20px;
+    text-align: center;
+    color: #666;
+}
+
+.sidebar-menu a:hover {
+    background: #e9ecef;
+}
+
+.sidebar-menu a.active {
+    background: #39883f;
+    color: white;
+    font-weight: bold;
+}
+
+.sidebar-menu a.active i {
+    color: white;
+}
+
+/* Profile Content */
+.profile-content {
+    flex: 1;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.content-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.content-header h2 {
+    color: #39883f;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.content-header p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Appointment Card */
+.appointment-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.app-info {
+    flex: 1;
+}
+
+.app-row {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.app-row strong {
+    color: #555;
+    display: inline-block;
+    width: 100px;
+}
+
+.app-row span {
+    color: #333;
+}
+
+.status-confirmed {
+    color: #28a745 !important;
+    font-weight: bold;
+}
+
+.app-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.btn-detail {
+    background: white;
+    border: 1px solid #39883f;
+    color: #39883f;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-detail:hover {
+    background: #39883f;
+    color: white;
+}
+
+.app-time {
+    font-size: 12px;
+    color: #888;
+}
+
