@@ -393,3 +393,8 @@ def log_feedback(
     except Exception as e:
         print(f"Lỗi khi ghi feedback log: {e}")
         return False
+
+
+# Alias để tương thích với FastAPI server.py
+undo_appointment_slot = cancel_appointment_slot
+
