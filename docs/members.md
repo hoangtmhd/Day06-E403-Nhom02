@@ -46,7 +46,7 @@ Tài liệu này chi tiết hóa vai trò, nhiệm vụ và các đóng góp th�
 ## 4. Nguyễn Hữu Thái Minh (2A202600619)
 * **Vai trò:** QA Tester & Demo Coordinator
 * **Các đóng góp thực tế:**
-  * **Kiểm thử chất lượng (QA):** Xây dựng bộ kịch bản kiểm thử (Test Scenarios) chi tiết dựa trên đặc tả SPEC sản phẩm (Happy Path, Failure Path, Low-confidence Path).
-  * **Phát triển kịch bản Demo:** Chuẩn bị các kịch bản hội thoại thực tế giữa bệnh nhân và trợ lý AI để chuẩn bị cho buổi Demo round.
+  * **Kiểm thử chất lượng (QA):** Xây dựng và tổng hợp bộ kịch bản kiểm thử & hội thoại demo chi tiết (Happy Path, Failure Path, Low-confidence Path) tại file [codebase/backend/test/manual_test_scripts.md](file:///d:/Work/Study/ai-in-action/Lab6/Day06-E403-Nhom02/codebase/backend/test/manual_test_scripts.md) để chạy test bằng `python cli_chat.py`.
+  * **Phát triển kịch bản Demo & QA:** Chuẩn bị các tình huống hội thoại mô phỏng thực tế giữa bệnh nhân và trợ lý AI để làm tài liệu hướng dẫn demo và kiểm thử thủ công cho nhóm.
   * **Fix lỗi định dạng AI:** Phát hiện và sửa lỗi parse chuỗi JSON do Gemini thỉnh thoảng tự ý chèn các ký tự escape không hợp lệ trong chuỗi trả về.
   * **Tài liệu hóa & Điều phối:** Soạn thảo slide trình bày dự án, tài liệu hỗ trợ thuyết trình và chuẩn bị video demo sản phẩm trước lớp.

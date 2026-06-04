@@ -21,7 +21,7 @@ PROMPT_FILE = os.path.join(AGENT_DIR, "prompts", "system_instruction.txt")
 def get_chat_response(history: list, user_message: str) -> dict:
     """
     Tên hàm: get_chat_response
-    Mô tả: Gọi API Gemini 1.5 Flash để tiếp nhận tin nhắn từ người dùng, đối chiếu với lịch sử trò chuyện
+    Mô tả: Gọi API Gemini 2.5 Flash để tiếp nhận tin nhắn từ người dùng, đối chiếu với lịch sử trò chuyện
            và dữ liệu bác sĩ trong database để đưa ra câu trả lời tư vấn dời/đổi lịch.
     Biến đầu vào:
         - history (list): Danh sách lịch sử cuộc chat trước đó, mỗi phần tử dạng {"role": "user/model", "parts": [...]}.
