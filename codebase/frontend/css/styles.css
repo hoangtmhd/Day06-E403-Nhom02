@@ -538,14 +538,17 @@ body {
     max-width: 85%;
 }
 
-.ai-message {
-    align-self: flex-start;
-}
-
-.user-message {
-    align-self: flex-end;
-    flex-direction: row-reverse;
-}
+    .user-message {
+        justify-content: flex-end;
+    }
+    .user-message .msg-bubble {
+        background-color: var(--primary-color);
+        color: #ffffff;
+    }
+    .ai-message .msg-bubble {
+        background-color: #ffffff;
+        color: var(--text-dark);
+    }
 
 .msg-avatar {
     width: 30px;

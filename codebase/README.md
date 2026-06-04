@@ -10,7 +10,8 @@ Thư mục này được tổ chức độc lập cho các cấu phần của d�
 codebase/
 ├── README.md                  ← Hướng dẫn chạy và sơ đồ cấu trúc (File này)
 ├── database/                  ← Thư mục Cơ sở dữ liệu Mock
-│   └── doctors.json           ← Dữ liệu lịch khám chính thức (được PUSH lên Git)
+│   ├── doctors.json           ← Dữ liệu lịch khám chính thức (được PUSH lên Git)
+│   └── feedback_logs.json     ← Log tín hiệu học (tự sinh khi chạy, KHÔNG push lên Git)
 ├── backend/                   ← Thư mục Backend AI (Trần Minh Hoàng phụ trách)
 │   ├── .env.example           ← File env mẫu
 │   ├── .gitignore             ← Bỏ qua .env, __pycache__, và .venv của backend
@@ -73,3 +74,46 @@ python cli_chat.py
 ## 🛠️ Tài liệu chi tiết các Hàm (API Documentation)
 Chi tiết thiết kế các hàm đọc ghi cơ sở dữ liệu và gọi API AI được lưu và tài liệu hóa tại [backend/README.md](backend/README.md) (nếu cần xem chi tiết cấu hình code).
 Dữ liệu lịch khám chính thức được lưu và đẩy trực tiếp lên Git tại [database/doctors.json](database/doctors.json).
+
+---
+
+## 📋 Feedback Log (Learning Signals)
+
+File `database/feedback_logs.json` được tự động tạo và cập nhật mỗi khi có giao dịch đổi lịch.
+
+### Cấu trúc mỗi entry log
+
+```json
+{
+  "timestamp": "2026-06-04T10:55:00Z",
+  "original_request": {
+    "doctor_id": "doc_nhi_003",
+    "date": "2026-06-05"
+  },
+  "ai_recommendation": {
+    "suggested_doctor_id": "doc_nhi_002",
+    "suggested_date": "2026-06-05",
+    "suggested_slot": "08:00"
+  },
+  "user_action": "confirmed",
+  "actual_selected_doctor_id": "doc_nhi_002"
+}
+```
+
+### Các giá trị `user_action`
+
+| Giá trị | Ý nghĩa |
+|---|---|
+| `confirmed` | Người dùng xác nhận đổi lịch thành công |
+| `failed_sync` | Booking thất bại do xung đột lịch thời gian thực (Failure Path) |
+| `undo` | Người dùng gõ `/undo` để hoàn tác lịch đã đặt |
+
+### Lệnh xem log nhanh
+
+```powershell
+# Xem toàn bộ log
+cat ..\..\database\feedback_logs.json
+
+# Đếm số lần booking thành công
+(Get-Content ..\..\database\feedback_logs.json | ConvertFrom-Json) | Where-Object { $_.user_action -eq "confirmed" } | Measure-Object | Select-Object Count
+```
