@@ -155,6 +155,89 @@ def find_equivalent_doctors(doctor_name: str, date: str) -> list:
     return equivalents
 
 
+def _title_rank(title: str) -> int:
+    """
+    Quy đổi chức danh/học hàm thành thang điểm để so sánh mức tương đương hoặc thấp hơn.
+    Điểm càng cao thì chức danh càng cao.
+    """
+    if not title:
+        return 0
+
+    normalized = title.lower().strip()
+    if "giáo sư" in normalized or normalized.startswith("gs"):
+        return 5
+    if "phó giáo sư" in normalized or "pgs" in normalized:
+        return 4
+    if "tiến sĩ" in normalized or normalized.startswith("ts"):
+        return 3
+    if "thạc sĩ" in normalized or normalized.startswith("ths"):
+        return 2
+    if "bsck" in normalized or "bác sĩ" in normalized:
+        return 1
+    return 0
+
+
+def find_lower_rank_doctors(doctor_name: str, date: str, max_results: int = 3) -> list:
+    """
+    Tên hàm: find_lower_rank_doctors
+    Mô tả: Tìm bác sĩ thay thế trong cùng chuyên khoa, có chức danh thấp hơn bác sĩ gốc
+           khi không còn bác sĩ cùng chức danh còn lịch trống.
+    Biến đầu vào:
+        - doctor_name (str): Tên bác sĩ gốc bị bận/hết lịch.
+        - date (str): Ngày mong muốn khám (YYYY-MM-DD).
+        - max_results (int): Số lượng gợi ý tối đa (mặc định 3).
+    Cấu trúc đầu ra: list - Danh sách bác sĩ cùng khoa, thấp hơn chức danh, còn lịch trống trong ngày.
+    Yêu cầu sử dụng: Dùng cho Low-Confidence Path theo spec khi fallback từ bác sĩ tương đương.
+    """
+    data = load_data()
+
+    source_doc = None
+    cleaned_name = doctor_name.replace(" ", "").lower()
+    for doc in data:
+        if doc.get("name", "").replace(" ", "").lower() == cleaned_name:
+            source_doc = doc
+            break
+
+    if not source_doc:
+        return []
+
+    dept = source_doc.get("department")
+    source_rank = _title_rank(source_doc.get("title", ""))
+
+    candidates = []
+    for doc in data:
+        if doc.get("name") == source_doc.get("name"):
+            continue
+        if doc.get("department") != dept:
+            continue
+
+        doc_rank = _title_rank(doc.get("title", ""))
+        if doc_rank >= source_rank:
+            continue
+
+        for sched in doc.get("schedule", []):
+            if sched.get("date") == date and sched.get("status") == "available":
+                candidates.append({
+                    "id": doc.get("id"),
+                    "name": doc.get("name"),
+                    "title": doc.get("title"),
+                    "role": doc.get("role"),
+                    "date": date,
+                    "slots": sched.get("slots", []),
+                    "rank_score": doc_rank
+                })
+
+    # Ưu tiên bác sĩ có rank gần với bác sĩ gốc nhất (cao nhất trong nhóm thấp hơn)
+    candidates.sort(key=lambda x: x.get("rank_score", 0), reverse=True)
+
+    results = []
+    for item in candidates[:max_results]:
+        item.pop("rank_score", None)
+        results.append(item)
+
+    return results
+
+
 def book_appointment_slot(doctor_id: str, date: str, slot: str) -> dict:
     """
     Tên hàm: book_appointment_slot
