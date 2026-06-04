@@ -48,7 +48,7 @@ def get_chat_response(history: list, user_message: str) -> dict:
 
     # 3. Khởi tạo model với cấu hình JSON output
     model = genai.GenerativeModel(
-        model_name="gemini-1.5-flash",
+        model_name="gemini-2.5-flash",
         system_instruction=full_instruction,
         generation_config={
             "response_mime_type": "application/json"
