@@ -2,287 +2,187 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Bệnh viện Thông minh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt lịch khám chuyên khoa - Bệnh viện Bạch Mai</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Main Content Area -->
-        <main id="main-content">
-
-            <!-- ===================== SCREEN: HOME ===================== -->
-            <section id="screen-home" class="screen active">
-                <header class="app-header">
-                    <div class="header-left">
-                        <div class="logo">
-                            <i class="fa-solid fa-staff-snake"></i>
-                        </div>
-                        <div class="header-titles">
-                            <h1>BỆNH VIỆN THÔNG MINH</h1>
-                            <h2>SMART HOSPITAL</h2>
-                        </div>
-                    </div>
-                    <div class="header-right">
-                        <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
-                        <button class="icon-btn"><i class="fa-solid fa-qrcode"></i></button>
-                    </div>
-                </header>
-
-                <div class="content-body">
-                    <div class="home-grid">
-                        <div class="grid-item">
-                            <i class="fa-regular fa-square-plus"></i>
-                            <span>Quy trình khám bệnh</span>
-                        </div>
-                        <div class="grid-item active-item" onclick="app.switchTab('screen-results')">
-                            <i class="fa-regular fa-clipboard"></i>
-                            <span>Kết quả khám bệnh</span>
-                        </div>
-                        <div class="grid-item">
-                            <i class="fa-solid fa-qrcode"></i>
-                            <span>Đăng nhập KIOSK</span>
-                        </div>
-                        <div class="grid-item" onclick="app.switchTab('screen-appointments')">
-                            <i class="fa-regular fa-calendar"></i>
-                            <span>Đặt lịch khám bệnh</span>
-                        </div>
-                        <div class="grid-item">
-                            <i class="fa-solid fa-file-signature"></i>
-                            <span>Văn bản chờ ký</span>
-                        </div>
-                        <div class="grid-item">
-                            <i class="fa-solid fa-bars"></i>
-                            <span>Chức năng khác</span>
-                        </div>
-                    </div>
-
-                    <div class="loading-banner">
-                        <div class="spinner"></div>
-                    </div>
-
-                    <div class="section-title">
-                        <h3>Bài viết nổi bật</h3>
-                        <button class="icon-btn refresh-btn"><i class="fa-solid fa-rotate-right"></i></button>
-                    </div>
-
-                    <div class="news-card">
-                        <div class="spinner small-spinner"></div>
-                        <span>Đang tải tin tức...</span>
-                    </div>
+    <!-- HEADER -->
+    <header class="desktop-header">
+        <div class="header-container">
+            <!-- Left: Logo -->
+            <div class="header-logo">
+                <i class="fa-solid fa-staff-snake logo-icon"></i>
+                <div class="logo-text">
+                    <h1>BỆNH VIỆN BẠCH MAI</h1>
+                    <h2>BACH MAI HOSPITAL</h2>
                 </div>
-            </section>
+            </div>
+            
+            <!-- Middle: Slogan -->
+            <div class="header-slogan">
+                <span>Vì sức khoẻ nhân dân</span>
+            </div>
 
-            <!-- ===================== SCREEN: APPOINTMENTS ===================== -->
-            <section id="screen-appointments" class="screen">
-                <header class="app-header">
-                    <div class="header-left">
-                        <div class="logo">
-                            <i class="fa-solid fa-staff-snake"></i>
-                        </div>
-                        <div class="header-titles">
-                            <h1>BỆNH VIỆN THÔNG MINH</h1>
-                            <h2>LỊCH HẸN ĐÃ ĐĂNG KÝ</h2>
-                        </div>
-                    </div>
-                    <div class="header-right">
-                        <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
-                        <button class="icon-btn"><i class="fa-solid fa-qrcode"></i></button>
-                    </div>
-                </header>
-
-                <div class="content-body center-empty">
-                    <div class="empty-state">
-                        <i class="fa-regular fa-calendar"></i>
-                        <h3>Chưa có lịch hẹn nào</h3>
-                        <p>Bạn chưa đăng ký lịch hẹn khám nào</p>
-                    </div>
+            <!-- Right: Info -->
+            <div class="header-info">
+                <div class="info-top">
+                    <span class="phone"><i class="fa-solid fa-phone"></i> 1900.888.866</span>
+                    <span class="user-greeting">Xin chào, Nguyễn Quang Minh</span>
+                    <a href="#" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a>
+                    <div class="lang-switch">VN</div>
                 </div>
-            </section>
-
-            <!-- ===================== SCREEN: RESULTS ===================== -->
-            <section id="screen-results" class="screen">
-                <header class="app-header">
-                    <div class="header-left">
-                        <div class="logo">
-                            <i class="fa-solid fa-staff-snake"></i>
-                        </div>
-                        <div class="header-titles">
-                            <h1>BỆNH VIỆN THÔNG MINH</h1>
-                            <h2>KẾT QUẢ KHÁM BỆNH</h2>
-                        </div>
-                    </div>
-                    <div class="header-right">
-                        <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
-                        <button class="icon-btn"><i class="fa-solid fa-qrcode"></i></button>
-                    </div>
-                </header>
-
-                <div class="content-body">
-                    <div class="dropdown-container">
-                        <label>Chọn thành viên</label>
-                        <select class="member-select">
-                            <option>Nguyễn Quang Minh</option>
-                        </select>
-                    </div>
-
-                    <div class="results-list">
-                        <!-- Card 1 -->
-                        <div class="result-card">
-                            <div class="card-top">
-                                <div class="index-circle">1</div>
-                                <div class="record-info">
-                                    <div class="record-id">000005409422</div>
-                                    <div class="patient-name">NGUYỄN QUANG MINH</div>
-                                    <div class="date-range">12/11/2025 &rarr; 08/12/2025</div>
-                                </div>
-                                <div class="badges">
-                                    <span class="badge badge-green">HOÀN THÀNH</span>
-                                    <span class="badge badge-blue"><i class="fa-solid fa-qrcode"></i> Barcode</span>
-                                    <span class="badge badge-yellow"><i class="fa-solid fa-lock"></i> Chia sẻ</span>
-                                </div>
-                            </div>
-                            <div class="card-details">
-                                <div class="detail-row">
-                                    <i class="fa-regular fa-calendar"></i>
-                                    <span>Ngày sinh: <strong>11/09/2000</strong></span>
-                                    <span class="spacer"></span>
-                                    <span>Giới tính: <strong>Nam</strong></span>
-                                </div>
-                                <div class="detail-row">
-                                    <i class="fa-solid fa-notes-medical"></i>
-                                    <span>Diện điều trị: <strong>Khám</strong></span>
-                                </div>
-                                <div class="detail-row">
-                                    <i class="fa-regular fa-clipboard"></i>
-                                    <span>Chẩn đoán: <strong>-</strong></span>
-                                </div>
-                            </div>
-                            <div class="card-actions">
-                                <button class="action-btn"><i class="fa-regular fa-eye"></i> Xem kết quả</button>
-                                <button class="action-btn"><i class="fa-regular fa-star"></i> Đánh giá</button>
-                                <button class="action-btn"><i class="fa-solid fa-headset"></i> Hỗ trợ</button>
-                            </div>
-                        </div>
-
-                        <!-- Card 2 -->
-                        <div class="result-card">
-                            <div class="card-top">
-                                <div class="index-circle">2</div>
-                                <div class="record-info">
-                                    <div class="record-id">000004843477</div>
-                                    <div class="patient-name">NGUYỄN QUANG MINH</div>
-                                    <div class="date-range">31/07/2025 &rarr; 01/08/2025</div>
-                                </div>
-                                <div class="badges">
-                                    <span class="badge badge-green">HOÀN THÀNH</span>
-                                    <span class="badge badge-blue"><i class="fa-solid fa-qrcode"></i> Barcode</span>
-                                    <span class="badge badge-yellow"><i class="fa-solid fa-lock"></i> Chia sẻ</span>
-                                </div>
-                            </div>
-                            <div class="card-details">
-                                <div class="detail-row">
-                                    <i class="fa-regular fa-calendar"></i>
-                                    <span>Ngày sinh: <strong>11/09/2000</strong></span>
-                                    <span class="spacer"></span>
-                                    <span>Giới tính: <strong>Nam</strong></span>
-                                </div>
-                                <div class="detail-row">
-                                    <i class="fa-solid fa-notes-medical"></i>
-                                    <span>Diện điều trị: <strong>Khám</strong></span>
-                                </div>
-                                <div class="detail-row">
-                                    <i class="fa-regular fa-clipboard"></i>
-                                    <span>Chẩn đoán: <strong>Z00.0 - Khám sức khỏe tổng quát</strong></span>
-                                </div>
-                            </div>
-                            <div class="card-actions">
-                                <button class="action-btn"><i class="fa-regular fa-eye"></i> Xem kết quả</button>
-                                <button class="action-btn"><i class="fa-regular fa-star"></i> Đánh giá</button>
-                                <button class="action-btn"><i class="fa-solid fa-headset"></i> Hỗ trợ</button>
-                            </div>
-                        </div>
-                        
-                    </div>
+                <div class="info-bottom">
+                    <i class="fa-solid fa-location-dot"></i> Số 78, đường Giải Phóng, phường Kim Liên, thành phố Hà Nội
                 </div>
-            </section>
+            </div>
+        </div>
+    </header>
 
-            <!-- ===================== SCREEN: LOGIN ===================== -->
-            <section id="screen-login" class="screen login-bg">
-                <div class="login-container">
-                    <div class="login-header">
-                        <div class="login-logo">
-                            <i class="fa-solid fa-staff-snake"></i>
-                        </div>
-                        <h1>BỆNH VIỆN THÔNG MINH</h1>
-                        <h2>SMART HOSPITAL</h2>
-                        <p>Xin chào, vui lòng đăng nhập để sử dụng hệ thống</p>
+    <!-- NAVIGATION MENU -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="#">CỔNG THÔNG TIN</a>
+            <a href="#">ĐỘI NGŨ BÁC SĨ</a>
+            <a href="#" class="active">ĐẶT LỊCH KHÁM</a>
+            <a href="#">CÁ NHÂN <i class="fa-solid fa-chevron-down"></i></a>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <div class="content-container">
+            <h1 class="page-title">Đặt lịch khám chuyên khoa</h1>
+
+            <!-- Form Section -->
+            <div class="booking-form">
+                <!-- User Select -->
+                <div class="form-row user-select-row">
+                    <div class="row-label">
+                        <i class="fa-solid fa-users"></i> CHỌN NGƯỜI ĐĂNG KÝ
                     </div>
-
-                    <div class="login-form-card">
-                        <div class="input-group">
+                    <div class="row-input">
+                        <div class="custom-select">
                             <i class="fa-solid fa-user input-icon"></i>
-                            <input type="text" placeholder="Tài khoản/CCCD">
+                            <select id="patient-select">
+                                <option>Tôi - Nguyễn Quang Minh</option>
+                            </select>
                         </div>
-                        
-                        <div class="input-group">
-                            <i class="fa-solid fa-lock input-icon"></i>
-                            <input type="password" placeholder="Mật khẩu" value="password123">
-                            <label class="floating-label">Mật khẩu</label>
-                            <i class="fa-regular fa-eye-slash toggle-pw"></i>
-                        </div>
-
-                        <button class="btn btn-primary" onclick="app.switchTab('screen-home'); document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); document.querySelector('[data-target=\'screen-home\']').classList.add('active');">
-                            Đăng nhập
-                        </button>
-                        
-                        <button class="btn btn-danger">
-                            Đăng nhập bằng VNeID
-                            <div class="vneid-logo"><i class="fa-solid fa-shield-halved"></i></div>
-                        </button>
-                    </div>
-
-                    <div class="login-footer">
-                        <a href="#">Quên mật khẩu?</a>
-                        <a href="#">Đăng ký tài khoản</a>
                     </div>
                 </div>
-            </section>
 
-        </main>
+                <!-- Department Select -->
+                <div class="form-group">
+                    <label>Chuyên khoa:</label>
+                    <div class="custom-dropdown" id="department-dropdown">
+                        <div class="dropdown-header">
+                            <span class="selected-text">- Chọn chuyên khoa -</span>
+                            <i class="fa-solid fa-caret-down"></i>
+                        </div>
+                        <div class="dropdown-body">
+                            <div class="dropdown-search">
+                                <input type="text" placeholder="" id="department-search">
+                            </div>
+                            <div class="dropdown-list">
+                                <div class="dropdown-item" data-value="da-lieu">
+                                    <div class="item-title">Da Liễu</div>
+                                    <div class="item-desc"><span class="highlight">Triệu chứng:</span> CÁC TRIỆU CHỨNG NGOÀI DA: NGỨA, MỤN, PHỎNG NƯỚC, CÁC BỆNH LÂY NHIỄM QUA ĐƯỜNG TÌNH DỤC...</div>
+                                </div>
+                                <div class="dropdown-item" data-value="ho-tro-sinh-san">
+                                    <div class="item-title">Hỗ trợ sinh sản</div>
+                                    <div class="item-desc"><span class="highlight">Triệu chứng:</span> Khám vô sinh, mong con, IUI, IVF; bảo tồn sinh sản; dậy thì, mãn kinh, tiền hôn nhân; thai nghén, nội tiết, phụ khoa hiếm muộn : polyp buồng tử cung, dính buồng tử cung, u xơ tử cung, u buồng trứng, buồng trứng đa nang, lạc nội mạc tử cung; sk giới tính/ tình dục, sức khoẻ sinh sản, nam khoa sinh sản...</div>
+                                </div>
+                                <div class="dropdown-item" data-value="di-ung">
+                                    <div class="item-title">Dị Ứng - Miễn dịch</div>
+                                    <div class="item-desc"><span class="highlight">Triệu chứng:</span> CÁC TRIỆU CHỨNG: MẨN ĐỎ NGOÀI DA, MỀ ĐAY, LUPUS BAN ĐỎ, BỆNH HỆ THỐNG,...</div>
+                                </div>
+                                <div class="dropdown-item" data-value="noi-co-xuong-khop">
+                                    <div class="item-title">Nội - Cơ Xương Khớp</div>
+                                    <div class="item-desc"><span class="highlight">Triệu chứng:</span> CÓ CÁC TRIỆU CHỨNG SAU: ĐAU XƯƠNG, ĐAU VÀ SƯNG TẠI CÁC KHỚP,...</div>
+                                </div>
+                                <div class="dropdown-item" data-value="noi-chong-doc">
+                                    <div class="item-title">Nội - Chống Độc</div>
+                                    <div class="item-desc"><span class="highlight">Triệu chứng:</span> SAU KHI BỊ CÔN TRÙNG - ĐỘNG VẬT CẮN, DẤU HIỆU NGỘ ĐỘC THUỐC, KIỂM TRA SỨC KHỎE...</div>
+                                </div>
+                                <div class="dropdown-item" data-value="noi-ho-hap">
+                                    <div class="item-title">Nội - Hô Hấp</div>
+                                    <div class="item-desc"><span class="highlight">Triệu chứng:</span> CÓ CÁC TRIỆU CHỨNG: HO KHAN, HO ĐỜM, BỆNH PHỔI MÃN TÍNH, CÓ TIỀN SỬ HÚT THUỐC LÁ NHIỀU, ...</div>
+                                </div>
+                                <div class="dropdown-item" data-value="noi-huyet-hoc">
+                                    <div class="item-title">Nội - Huyết Học</div>
+                                    <div class="item-desc"><span class="highlight">Triệu chứng:</span> CÓ CÁC TRIỆU CHỨNG SAU: MỆT MỎI, DA XANH, CÓ CÁC NỐT XUẤT HUYẾT, HOẶC BẦM TÍM DƯỚI DA,...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- ===================== BOTTOM NAVIGATION ===================== -->
-        <nav class="bottom-nav">
-            <div class="nav-item" data-target="screen-login">
-                <i class="fa-regular fa-user"></i>
-                <span>Tài khoản</span>
+                <!-- Date Select -->
+                <div class="form-group date-group">
+                    <label>Chọn ngày khám</label>
+                    <div class="date-list">
+                        <button class="date-btn active">
+                            <span class="date-day">4/6</span>
+                            <span class="date-dow">T5</span>
+                        </button>
+                        <button class="date-btn">
+                            <span class="date-day">5/6</span>
+                            <span class="date-dow">T6</span>
+                        </button>
+                        <button class="date-btn">
+                            <span class="date-day">6/6</span>
+                            <span class="date-dow">T7</span>
+                        </button>
+                        <button class="date-btn">
+                            <span class="date-day">7/6</span>
+                            <span class="date-dow">CN</span>
+                        </button>
+                        <button class="date-btn">
+                            <span class="date-day">8/6</span>
+                            <span class="date-dow">T2</span>
+                        </button>
+                        <button class="date-btn">
+                            <span class="date-day">9/6</span>
+                            <span class="date-dow">T3</span>
+                        </button>
+                        <button class="date-btn">
+                            <span class="date-day">10/6</span>
+                            <span class="date-dow">T4</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Info Message -->
+                <div class="info-message">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <p>Vui lòng chọn chuyên khoa để xem lịch khám</p>
+                </div>
+
+                <!-- Action Button -->
+                <div class="action-row">
+                    <button id="btn-continue" class="btn-disabled" disabled>Tiếp tục</button>
+                </div>
             </div>
-            <div class="nav-item" data-target="screen-results">
-                <i class="fa-regular fa-clipboard"></i>
-                <span>Kết quả</span>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="desktop-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <i class="fa-solid fa-staff-snake footer-logo"></i>
             </div>
-            <div class="nav-item active" data-target="screen-home">
-                <i class="fa-solid fa-house"></i>
-                <span>Trang chủ</span>
+            <div class="footer-right">
+                LIÊN KẾT VỚI CHÚNG TÔI
             </div>
-            <div class="nav-item" data-target="screen-appointments">
-                <i class="fa-regular fa-calendar"></i>
-                <span>Lịch khám</span>
-            </div>
-            <div class="nav-item" data-target="screen-home">
-                <i class="fa-solid fa-bars"></i>
-                <span>Chức năng</span>
-            </div>
-        </nav>
-        
-        <!-- Background Decor -->
-        <div class="bg-flower"></div>
-    </div>
+        </div>
+    </footer>
 
     <script src="js/app.js"></script>
 </body>

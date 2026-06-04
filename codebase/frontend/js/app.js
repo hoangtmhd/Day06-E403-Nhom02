@@ -1,70 +1,68 @@
-const app = {
-    init: function() {
-        this.bindEvents();
-    },
+document.addEventListener('DOMContentLoaded', () => {
+    const infoMessage = document.querySelector('.info-message');
+    const btnContinue = document.getElementById('btn-continue');
 
-    bindEvents: function() {
-        const navItems = document.querySelectorAll('.nav-item');
-        
-        navItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // Get target screen id
-                const targetId = item.getAttribute('data-target');
-                if(!targetId) return;
+    // Custom Dropdown Logic
+    const dropdown = document.getElementById('department-dropdown');
+    const dropdownHeader = dropdown.querySelector('.dropdown-header');
+    const selectedText = dropdown.querySelector('.selected-text');
+    const searchInput = document.getElementById('department-search');
+    const dropdownItems = dropdown.querySelectorAll('.dropdown-item');
 
-                this.switchTab(targetId);
-
-                // Update active state on nav
-                navItems.forEach(nav => nav.classList.remove('active'));
-                
-                // Only activate nav items that match this target, except if multiple match, just activate the clicked one
-                item.classList.add('active');
-            });
-        });
-
-        // Toggle Password visibility
-        const togglePw = document.querySelector('.toggle-pw');
-        if(togglePw) {
-            togglePw.addEventListener('click', function() {
-                const input = this.previousElementSibling.previousElementSibling;
-                if(input.type === 'password') {
-                    input.type = 'text';
-                    this.classList.remove('fa-eye-slash');
-                    this.classList.add('fa-eye');
-                } else {
-                    input.type = 'password';
-                    this.classList.remove('fa-eye');
-                    this.classList.add('fa-eye-slash');
-                }
-            });
+    // Toggle dropdown
+    dropdownHeader.addEventListener('click', () => {
+        dropdown.classList.toggle('open');
+        if (dropdown.classList.contains('open')) {
+            searchInput.focus();
         }
-    },
+    });
 
-    switchTab: function(targetId) {
-        // Hide all screens
-        document.querySelectorAll('.screen').forEach(screen => {
-            screen.classList.remove('active');
-        });
-
-        // Show target screen
-        const targetScreen = document.getElementById(targetId);
-        if(targetScreen) {
-            targetScreen.classList.add('active');
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('open');
         }
+    });
 
-        // Also sync the nav bar if switched from elsewhere (like home grid buttons)
-        const navItems = document.querySelectorAll('.nav-item');
-        navItems.forEach(nav => {
-            if(nav.getAttribute('data-target') === targetId) {
-                navItems.forEach(n => n.classList.remove('active'));
-                nav.classList.add('active');
+    // Handle item selection
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const title = item.querySelector('.item-title').textContent;
+            selectedText.textContent = title;
+            selectedText.style.color = '#333';
+            dropdown.classList.remove('open');
+
+            // Update UI like before
+            infoMessage.innerHTML = `
+                <i class="fa-solid fa-check-circle" style="color: #2e7d32;"></i>
+                <p style="color: #2e7d32; font-weight: 500; font-size: 16px;">Đã chọn chuyên khoa: ${title}</p>
+                <p style="color: #666; font-size: 13px; margin-top: 5px;">Hệ thống sẽ tải danh sách Bác sĩ tương ứng... (sẽ lấy từ doctors.json)</p>
+            `;
+            btnContinue.disabled = false;
+            btnContinue.classList.remove('btn-disabled');
+            btnContinue.classList.add('btn-active');
+        });
+    });
+
+    // Search filter
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        dropdownItems.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            if (text.includes(query)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
             }
         });
-    }
-};
+    });
 
-document.addEventListener('DOMContentLoaded', () => {
-    app.init();
+    // Date selection logic
+    const dateBtns = document.querySelectorAll('.date-btn');
+    dateBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            dateBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
 });
