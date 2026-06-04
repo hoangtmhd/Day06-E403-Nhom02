@@ -1,0 +1,301 @@
+[
+  {
+    "id": "doc_nhi_001",
+    "name": "TS.BS. Nguyễn Thành Nam",
+    "title": "Tiến sĩ",
+    "role": "Giám đốc Trung tâm Nhi Khoa",
+    "department": "Trung tâm Nhi khoa",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["08:30", "10:30", "15:00"],
+        "status": "available"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["09:00", "11:00"],
+        "status": "busy",
+        "reason": "Họp giao ban chuyên môn Trung tâm"
+      }
+    ]
+  },
+  {
+    "id": "doc_nhi_002",
+    "name": "BSCKII. Phạm Công Khắc",
+    "title": "Không có",
+    "role": "Phó Giám đốc Trung tâm Nhi khoa",
+    "department": "Trung tâm Nhi khoa",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["08:00", "09:30", "14:00"],
+        "status": "available"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["08:30", "10:00", "15:30"],
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "id": "doc_nhi_003",
+    "name": "BSCKII. Lê Sỹ Hùng",
+    "title": "Không có",
+    "role": "Phó Giám đốc Trung tâm Nhi khoa",
+    "department": "Trung tâm Nhi khoa",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["08:30", "10:00", "14:30"],
+        "status": "busy",
+        "reason": "Hội chẩn ca bệnh Nhi khoa nguy kịch"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["09:00", "10:30"],
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "id": "doc_nhi_004",
+    "name": "BSCKII. Vũ Hữu Thời",
+    "title": "Không có",
+    "role": "Phó Giám đốc Trung tâm Nhi khoa",
+    "department": "Trung tâm Nhi khoa",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["09:00", "14:00", "15:30"],
+        "status": "available"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["08:30", "10:30"],
+        "status": "busy",
+        "reason": "Đi buồng bệnh nhân nặng"
+      }
+    ]
+  },
+  {
+    "id": "doc_nhi_005",
+    "name": "ThS.BS. Tô Thị Hảo",
+    "title": "Thạc sĩ",
+    "role": "Bác sĩ chuyên khoa Nhi",
+    "department": "Trung tâm Nhi khoa",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["08:30", "10:30", "14:30"],
+        "status": "available"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["08:00", "09:30"],
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "id": "doc_nhi_006",
+    "name": "ThS.BS. Nguyễn Văn Toàn",
+    "title": "Thạc sĩ",
+    "role": "Bác sĩ chuyên khoa Nhi",
+    "department": "Trung tâm Nhi khoa",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["08:00", "10:00", "15:00"],
+        "status": "available"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["09:30", "14:00"],
+        "status": "busy",
+        "reason": "Giảng dạy thực hành lâm sàng"
+      }
+    ]
+  },
+  {
+    "id": "doc_nhi_007",
+    "name": "ThS.BS. Phạm Văn Hưng",
+    "title": "Thạc sĩ",
+    "role": "Bác sĩ chuyên khoa Nhi",
+    "department": "Trung tâm Nhi khoa",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["08:30", "10:00"],
+        "status": "busy",
+        "reason": "Trực phòng cấp cứu"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["09:00", "14:30", "16:00"],
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "id": "doc_nhi_008",
+    "name": "ThS.BS. Nguyễn Hữu Hiếu",
+    "title": "Thạc sĩ",
+    "role": "Bác sĩ chuyên khoa Nhi",
+    "department": "Trung tâm Nhi khoa",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["08:00", "10:30", "14:00"],
+        "status": "available"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["09:00", "11:00"],
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "id": "doc_nhi_009",
+    "name": "BS. Lê Thị Thanh Tâm",
+    "title": "Không có",
+    "role": "Bác sĩ chuyên khoa Nhi",
+    "department": "Trung tâm Nhi khoa",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["08:30", "13:30", "15:00"],
+        "status": "available"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["08:00", "10:00"],
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "id": "doc_nhi_010",
+    "name": "ThS.BSNT. Mai Thành Công",
+    "title": "Thạc sĩ",
+    "role": "Bác sĩ nội trú chuyên khoa Nhi",
+    "department": "Trung tâm Nhi khoa",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["08:00", "09:30", "11:00"],
+        "status": "busy",
+        "reason": "Trực đơn nguyên Hồi sức Nhi"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["08:30", "14:00", "15:30"],
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "id": "doc_nhi_011",
+    "name": "BS. Tống Hải Yến",
+    "title": "Không có",
+    "role": "Bác sĩ chuyên khoa Nhi",
+    "department": "Trung tâm Nhi khoa",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["09:00", "10:30", "14:30"],
+        "status": "available"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["08:30", "15:00"],
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "id": "doc_nhi_012",
+    "name": "BSCKII. Doãn Phúc Hải",
+    "title": "Không có",
+    "role": "Bác sĩ chuyên khoa II",
+    "department": "Trung tâm Nhi khoa",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["08:00", "10:00", "14:00"],
+        "status": "busy",
+        "reason": "Hội chẩn liên khoa chuyên sâu"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["08:30", "10:30", "15:00"],
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "id": "doc_nhi_013",
+    "name": "ThS.BS. Bùi Văn Đức",
+    "title": "Thạc sĩ",
+    "role": "Bác sĩ chuyên khoa Nhi",
+    "department": "Trung tâm Nhi khoa",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["08:30", "10:00", "14:00"],
+        "status": "available"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["09:00", "11:00"],
+        "status": "busy",
+        "reason": "Khám bệnh tại Đơn nguyên phòng khám"
+      }
+    ]
+  },
+  {
+    "id": "doc_nhi_014",
+    "name": "ThS.BS. Hoàng Thị Nhung",
+    "title": "Thạc sĩ",
+    "role": "Bác sĩ chuyên khoa Nhi",
+    "department": "Trung tâm Nhi khoa",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["08:00", "09:30", "15:00"],
+        "status": "available"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["08:30", "10:30"],
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "id": "doc_nhi_015",
+    "name": "TS.BS. Trần Thị Trang Anh",
+    "title": "Tiến sĩ",
+    "role": "Bác sĩ chuyên khoa Nhi",
+    "department": "Trung tâm Nhi khoa",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["09:00", "10:30"],
+        "status": "busy",
+        "reason": "Tham gia hội thảo nghiên cứu Nhi khoa"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["08:30", "14:00", "15:30"],
+        "status": "available"
+      },
+      {
+        "date": "2026-06-07",
+        "slots": ["09:30", "11:00"],
+        "status": "available"
+      }
+    ]
+  }
+]
