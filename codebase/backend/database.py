@@ -190,3 +190,51 @@ def book_appointment_slot(doctor_id: str, date: str, slot: str) -> dict:
                 return {"success": False, "message": "Lỗi hệ thống khi lưu lịch hẹn."}
                 
     return {"success": False, "message": f"Bác sĩ không có lịch trực vào ngày {date}."}
+
+
+def undo_appointment_slot(doctor_id: str, date: str, slot: str) -> dict:
+    """
+    Tên hàm: undo_appointment_slot
+    Mô tả: Khôi phục lại một slot giờ khám đã bị đặt (Hoàn tác). Thêm lại slot giờ vào danh sách 
+           các khung giờ trống của bác sĩ và đặt trạng thái ngày khám về "available".
+    Biến đầu vào:
+        - doctor_id (str): ID duy nhất của bác sĩ (ví dụ: "doc_nhi_003").
+        - date (str): Ngày cần hoàn tác lịch hẹn (YYYY-MM-DD).
+        - slot (str): Khung giờ khám cần khôi phục (ví dụ: "08:30").
+    Cấu trúc đầu ra: dict - Trả về kết quả giao dịch dạng:
+                     {"success": True, "message": "..."} nếu thành công,
+                     {"success": False, "message": "..."} nếu có lỗi xảy ra.
+    Yêu cầu sử dụng: Gọi khi người dùng yêu cầu Hoàn tác dời lịch khám từ giao diện hoặc qua trợ lý AI.
+    """
+    data = load_data()
+    
+    target_doc = None
+    for doc in data:
+        if doc.get("id") == doctor_id:
+            target_doc = doc
+            break
+            
+    if not target_doc:
+        return {"success": False, "message": "Không tìm thấy bác sĩ yêu cầu."}
+        
+    for sched in target_doc.get("schedule", []):
+        if sched.get("date") == date:
+            slots = sched.get("slots", [])
+            if slot not in slots:
+                slots.append(slot)
+                slots.sort()
+            
+            sched["status"] = "available"
+            if "reason" in sched:
+                del sched["reason"]
+                
+            if save_data(data):
+                return {
+                    "success": True,
+                    "message": f"Đã hoàn tác lịch khám của bác sĩ {target_doc.get('name')} lúc {slot} ngày {date}."
+                }
+            else:
+                return {"success": False, "message": "Lỗi hệ thống khi khôi phục lịch khám."}
+                
+    return {"success": False, "message": f"Bác sĩ không có lịch trực vào ngày {date}."}
+
