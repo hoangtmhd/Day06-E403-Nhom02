@@ -47,24 +47,51 @@ document.addEventListener('DOMContentLoaded', () => {
             btnContinue.classList.remove('btn-disabled');
             btnContinue.classList.add('btn-active');
 
-            // Fake fetch data for demonstration (because actual fetch('doctors.json') fails in file:// protocol without a local server)
-            setTimeout(() => {
-                doctorsList.innerHTML = `
-                    <div class="doctor-card">
-                        <div class="doctor-info">
-                            <div class="doctor-name">PGS.TS. Trần Thị B</div>
-                            <div class="doctor-role">Phó khoa ${title} - Bệnh viện Bạch Mai</div>
-                            <div class="doctor-schedule">
-                                <div class="schedule-day">Lịch khám gần nhất:</div>
-                                <button class="slot-btn">08:30</button>
-                                <button class="slot-btn">09:30</button>
-                                <button class="slot-btn">10:30</button>
-                                <button class="slot-btn">14:00</button>
+            // Real fetch data from backend API
+            fetch('/api/doctors?department=' + encodeURIComponent(title))
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length === 0) {
+                        doctorsList.innerHTML = `<p style="padding: 10px; color: #666;">Không có bác sĩ nào cho chuyên khoa này.</p>`;
+                        return;
+                    }
+
+                    let html = '';
+                    data.forEach(doctor => {
+                        let slotsHtml = '';
+                        if (doctor.schedule && doctor.schedule.length > 0) {
+                            // Render available slots
+                            doctor.schedule.forEach(day => {
+                                const availableSlots = day.slots.filter(s => s.status === 'available');
+                                if (availableSlots.length > 0) {
+                                    slotsHtml += `<div class="schedule-day">Ngày ${day.date}:</div>`;
+                                    availableSlots.forEach(slot => {
+                                        slotsHtml += `<button class="slot-btn" onclick="alert('Đã chọn khung giờ ${slot.time} ngày ${day.date} của bác sĩ ${doctor.doctor_name}')">${slot.time}</button>`;
+                                    });
+                                }
+                            });
+                        }
+                        if (!slotsHtml) {
+                            slotsHtml = `<div class="schedule-day">Hiện tại bác sĩ đã kín lịch.</div>`;
+                        }
+
+                        html += `
+                            <div class="doctor-card">
+                                <div class="doctor-info">
+                                    <div class="doctor-name">${doctor.doctor_name}</div>
+                                    <div class="doctor-role">${doctor.degree} - Khoa ${doctor.department}</div>
+                                    <div class="doctor-schedule">
+                                        ${slotsHtml}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                `;
-            }, 600);
+                        `;
+                    });
+                    doctorsList.innerHTML = html;
+                })
+                .catch(err => {
+                    doctorsList.innerHTML = `<p style="padding: 10px; color: red;">Lỗi khi tải danh sách Bác sĩ: ${err.message}</p>`;
+                });
         });
     });
 

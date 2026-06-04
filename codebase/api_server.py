@@ -8,13 +8,36 @@ from dotenv import load_dotenv
 BACKEND_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'backend')
 sys.path.append(BACKEND_DIR)
 
+import urllib.parse
 from agent.agent import get_chat_response
-from database import book_appointment_slot
+from database import book_appointment_slot, get_doctors_by_dept
 
 # Load .env (dành cho GEMINI_API_KEY)
 load_dotenv(os.path.join(BACKEND_DIR, '.env'))
 
 class APIRequestHandler(SimpleHTTPRequestHandler):
+    def do_GET(self):
+        parsed_path = urllib.parse.urlparse(self.path)
+        if parsed_path.path == '/api/doctors':
+            query_params = urllib.parse.parse_qs(parsed_path.query)
+            department = query_params.get('department', [''])[0]
+            
+            try:
+                # Lọc danh sách bác sĩ từ DB
+                doctors = get_doctors_by_dept(department)
+                
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps(doctors, ensure_ascii=False).encode('utf-8'))
+            except Exception as e:
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": str(e)}).encode('utf-8'))
+        else:
+            # Phục vụ file tĩnh tĩnh bình thường
+            super().do_GET()
     def do_POST(self):
         if self.path == '/api/chat':
             content_length = int(self.headers['Content-Length'])
@@ -65,10 +88,10 @@ class APIRequestHandler(SimpleHTTPRequestHandler):
 if __name__ == '__main__':
     # Chạy server ở thư mục codebase để phục vụ file HTML/JS
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
-    port = 8000
+    port = 8080
     server_address = ('', port)
     httpd = HTTPServer(server_address, APIRequestHandler)
-    print(f"🚀 API Server & Web Server đang chạy tại: http://localhost:{port}/frontend/index.html")
+    print(f"API Server and Web Server running at: http://localhost:{port}/frontend/index.html")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
