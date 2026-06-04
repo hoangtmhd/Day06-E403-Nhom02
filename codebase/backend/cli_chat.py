@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BACKEND_DIR)
 
-from database import load_data, book_appointment_slot
+from database import load_data, book_appointment_slot, cancel_appointment_slot, log_feedback
 from agent.agent import get_chat_response
 
 # Load file .env
@@ -39,6 +39,7 @@ def main():
     print("Các lệnh hỗ trợ:")
     print("  /status : Xem trạng thái cơ sở dữ liệu lịch khám")
     print("  /reset  : Làm mới lịch sử cuộc trò chuyện")
+    print("  /undo   : Hoàn tác lịch đặt gần nhất")
     print("  /exit   : Thoát chương trình")
     print("==================================================")
 
@@ -55,6 +56,11 @@ def main():
             print("Chương trình có thể không hoạt động nếu không có API Key.")
 
     history = []
+    # Lưu booking gần nhất để hỗ trợ Undo (TC-CR-02)
+    last_booking = None
+    # Thông tin lịch hẹn gốc bị hủy (phải khớp với appointment_context trong agent.py)
+    ORIGINAL_APPOINTMENT = {"doctor_id": "doc_nhi_003", "date": "2026-06-05"}
+
     print_database_status()
 
     while True:
@@ -72,7 +78,35 @@ def main():
                 continue
             elif user_input.lower() == "/reset":
                 history = []
+                last_booking = None
                 print("🧹 Đã làm sạch lịch sử cuộc trò chuyện.")
+                continue
+            elif user_input.lower() == "/undo":
+                if not last_booking:
+                    print("⚠️ Không có lịch đặt gần nhất để hoàn tác.")
+                    continue
+                undo_doc_id = last_booking["doctor_id"]
+                undo_date = last_booking["date"]
+                undo_slot = last_booking["slot"]
+                print(f"↩️ Đang hoàn tác lịch khám {undo_slot} ngày {undo_date} của bác sĩ {undo_doc_id}...")
+                undo_result = cancel_appointment_slot(undo_doc_id, undo_date, undo_slot)
+                if undo_result["success"]:
+                    print(f"✅ HOÀN TÁC THÀNH CÔNG: {undo_result['message']}")
+                    log_feedback(
+                        original_doctor_id=ORIGINAL_APPOINTMENT["doctor_id"],
+                        original_date=ORIGINAL_APPOINTMENT["date"],
+                        suggested_doctor_id=undo_doc_id,
+                        suggested_date=undo_date,
+                        suggested_slot=undo_slot,
+                        user_action="undo",
+                        actual_selected_doctor_id=None
+                    )
+                    history.append({"role": "user", "parts": ["[Hệ thống: Người dùng đã hoàn tác lịch đặt vừa rồi.]"] })
+                    history.append({"role": "model", "parts": [json.dumps({"reply": "Đã hoàn tác việc đổi lịch. Bạn có muốn chọn phương án khác không?", "booking_intent": None}, ensure_ascii=False)]})
+                    last_booking = None
+                else:
+                    print(f"❌ HOÀN TÁC THẤT BẠI: {undo_result['message']}")
+                print_database_status()
                 continue
 
             # Gọi trợ lý AI xử lý phản hồi
@@ -107,9 +141,19 @@ def main():
 
                 if booking_result["success"]:
                     print(f"✅ THÀNH CÔNG: {booking_result['message']}")
-                    # Append kết quả xác nhận hệ thống vào lịch sử để AI biết lịch đã đổi thành công
+                    print("💡 Gõ /undo để hoàn tác lịch đặt vừa rồi.")
+                    last_booking = {"doctor_id": doc_id, "date": date, "slot": slot}
+                    log_feedback(
+                        original_doctor_id=ORIGINAL_APPOINTMENT["doctor_id"],
+                        original_date=ORIGINAL_APPOINTMENT["date"],
+                        suggested_doctor_id=doc_id,
+                        suggested_date=date,
+                        suggested_slot=slot,
+                        user_action="confirmed",
+                        actual_selected_doctor_id=doc_id
+                    )
                     history.append({
-                        "role": "user", 
+                        "role": "user",
                         "parts": [f"[Hệ thống: Đổi lịch thành công cho bác sĩ {doc_id} lúc {slot} ngày {date}]"]
                     })
                     history.append({
@@ -121,10 +165,18 @@ def main():
                     })
                 else:
                     print(f"❌ THẤT BẠI: {booking_result['message']}")
-                    # Append kịch bản lỗi vào lịch sử chat (Failure Path)
                     print("⚠️ Kích hoạt UX Fallback: Hiển thị Thẻ kết nối Tổng đài Hotline: 1900 xxxx")
+                    log_feedback(
+                        original_doctor_id=ORIGINAL_APPOINTMENT["doctor_id"],
+                        original_date=ORIGINAL_APPOINTMENT["date"],
+                        suggested_doctor_id=doc_id,
+                        suggested_date=date,
+                        suggested_slot=slot,
+                        user_action="failed_sync",
+                        actual_selected_doctor_id=None
+                    )
                     history.append({
-                        "role": "user", 
+                        "role": "user",
                         "parts": [f"[Hệ thống: Lỗi đổi lịch. Lý do: {booking_result['message']}]"]
                     })
                     history.append({

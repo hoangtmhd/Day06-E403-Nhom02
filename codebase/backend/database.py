@@ -190,3 +190,107 @@ def book_appointment_slot(doctor_id: str, date: str, slot: str) -> dict:
                 return {"success": False, "message": "Lỗi hệ thống khi lưu lịch hẹn."}
                 
     return {"success": False, "message": f"Bác sĩ không có lịch trực vào ngày {date}."}
+
+
+def cancel_appointment_slot(doctor_id: str, date: str, slot: str) -> dict:
+    """
+    Tên hàm: cancel_appointment_slot
+    Mô tả: Hoàn tác (Undo) lịch khám đã đặt. Khôi phục slot giờ khám về danh sách trống
+           và đặt lại trạng thái "available" cho ngày đó.
+    Biến đầu vào:
+        - doctor_id (str): ID bác sĩ cần hoàn tác.
+        - date (str): Ngày khám cần hoàn tác (YYYY-MM-DD).
+        - slot (str): Giờ khám cần khôi phục lại (ví dụ: "08:30").
+    Cấu trúc đầu ra: dict - {"success": True/False, "message": "..."}.
+    Yêu cầu sử dụng: Chỉ gọi ngay sau khi book_appointment_slot() thành công để đảm bảo tính nhất quán.
+    """
+    data = load_data()
+
+    target_doc = None
+    for doc in data:
+        if doc.get("id") == doctor_id:
+            target_doc = doc
+            break
+
+    if not target_doc:
+        return {"success": False, "message": "Không tìm thấy bác sĩ yêu cầu."}
+
+    for sched in target_doc.get("schedule", []):
+        if sched.get("date") == date:
+            slots = sched.get("slots", [])
+            if slot not in slots:
+                slots.append(slot)
+                slots.sort()
+            sched["status"] = "available"
+            sched.pop("reason", None)
+
+            if save_data(data):
+                return {
+                    "success": True,
+                    "message": f"Đã hoàn tác lịch khám {slot} ngày {date} của bác sĩ {target_doc.get('name')}."
+                }
+            else:
+                return {"success": False, "message": "Lỗi hệ thống khi hoàn tác lịch hẹn."}
+
+    return {"success": False, "message": f"Không tìm thấy ngày {date} trong lịch của bác sĩ."}
+
+
+def log_feedback(
+    original_doctor_id: str,
+    original_date: str,
+    suggested_doctor_id: str,
+    suggested_date: str,
+    suggested_slot: str,
+    user_action: str,
+    actual_selected_doctor_id: str = None
+) -> bool:
+    """
+    Tên hàm: log_feedback
+    Mô tả: Ghi nhận tín hiệu học (Learning Signals) vào file feedback_logs.json.
+           Lưu cặp dữ liệu [Lịch_AI_gợi_ý, Lịch_User_chọn_thực_tế] để tối ưu gợi ý sau này.
+    Biến đầu vào:
+        - original_doctor_id (str): ID bác sĩ ban đầu bị bận.
+        - original_date (str): Ngày khám ban đầu bị hủy.
+        - suggested_doctor_id (str): ID bác sĩ AI gợi ý.
+        - suggested_date (str): Ngày AI gợi ý.
+        - suggested_slot (str): Giờ AI gợi ý.
+        - user_action (str): Hành động của user: "confirmed" | "failed_sync" | "undo".
+        - actual_selected_doctor_id (str): ID bác sĩ user thực sự chốt (None nếu không thành công).
+    Cấu trúc đầu ra: bool - True nếu ghi thành công.
+    """
+    import datetime
+
+    FEEDBACK_FILE = os.path.join(CODEBASE_DIR, "database", "feedback_logs.json")
+
+    existing_logs = []
+    if os.path.exists(FEEDBACK_FILE):
+        try:
+            with open(FEEDBACK_FILE, "r", encoding="utf-8") as f:
+                existing_logs = json.load(f)
+        except Exception:
+            existing_logs = []
+
+    entry = {
+        "timestamp": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "original_request": {
+            "doctor_id": original_doctor_id,
+            "date": original_date
+        },
+        "ai_recommendation": {
+            "suggested_doctor_id": suggested_doctor_id,
+            "suggested_date": suggested_date,
+            "suggested_slot": suggested_slot
+        },
+        "user_action": user_action,
+        "actual_selected_doctor_id": actual_selected_doctor_id
+    }
+
+    existing_logs.append(entry)
+
+    try:
+        with open(FEEDBACK_FILE, "w", encoding="utf-8") as f:
+            json.dump(existing_logs, f, ensure_ascii=False, indent=2)
+        return True
+    except Exception as e:
+        print(f"Lỗi khi ghi feedback log: {e}")
+        return False
