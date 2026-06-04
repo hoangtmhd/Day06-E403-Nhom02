@@ -395,6 +395,3 @@ def log_feedback(
         return False
 
 
-# Alias để tương thích ngược với mã nguồn dùng cancel_appointment_slot
-cancel_appointment_slot = undo_appointment_slot
-
