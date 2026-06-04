@@ -21,7 +21,7 @@ PROMPT_FILE = os.path.join(AGENT_DIR, "prompts", "system_instruction.txt")
 def get_chat_response(history: list, user_message: str) -> dict:
     """
     Tên hàm: get_chat_response
-    Mô tả: Gọi API Gemini 1.5 Flash để tiếp nhận tin nhắn từ người dùng, đối chiếu với lịch sử trò chuyện
+    Mô tả: Gọi API Gemini 2.5 Flash để tiếp nhận tin nhắn từ người dùng, đối chiếu với lịch sử trò chuyện
            và dữ liệu bác sĩ trong database để đưa ra câu trả lời tư vấn dời/đổi lịch.
     Biến đầu vào:
         - history (list): Danh sách lịch sử cuộc chat trước đó, mỗi phần tử dạng {"role": "user/model", "parts": [...]}.
@@ -88,14 +88,21 @@ def get_chat_response(history: list, user_message: str) -> dict:
         response = model.generate_content(contents)
         response_text = response.text
         
+        # Sửa lỗi thoát ký tự (invalid escape sequences) trong JSON chuỗi của Gemini
+        # Regex tìm backslash không phải là ký tự escape hợp lệ của JSON (\", \\, \/, \b, \f, \n, \r, \t, \uXXXX)
+        # và thay thế bằng \\ để json.loads có thể đọc được như ký tự thường.
+        import re
+        fixed_text = re.sub(r'\\(?!["\\/bfnrt]|u[0-9a-fA-F]{4})', r'\\\\', response_text)
+        
         # Parse JSON kết quả trả về từ Gemini
-        result = json.loads(response_text)
+        result = json.loads(fixed_text)
         return {
             "reply": result.get("reply", "Dạ, hệ thống đang gặp lỗi xử lý thông tin. Xin vui lòng thử lại."),
             "booking_intent": result.get("booking_intent")
         }
     except json.JSONDecodeError as je:
         print(f"Lỗi phân tách kết quả JSON từ AI: {je}")
+        print(f"Nội dung phản hồi lỗi: {response_text}")
         return {
             "reply": "Dạ, hệ thống gặp sự cố định dạng dữ liệu từ AI. Xin vui lòng thử lại.",
             "booking_intent": None

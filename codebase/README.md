@@ -9,21 +9,32 @@ Thư mục này được tổ chức độc lập cho các cấu phần của d�
 ```text
 codebase/
 ├── README.md                  ← Hướng dẫn chạy và sơ đồ cấu trúc (File này)
+├── api_server.py              ← Máy chủ Python tích hợp để serve Frontend & chạy Backend API
 ├── database/                  ← Thư mục Cơ sở dữ liệu Mock
+│   ├── README.md              ← Hướng dẫn quản lý và cấu trúc cơ sở dữ liệu
 │   ├── doctors.json           ← Dữ liệu lịch khám chính thức (được PUSH lên Git)
-│   └── feedback_logs.json     ← Log tín hiệu học (tự sinh khi chạy, KHÔNG push lên Git)
+│   ├── doctors_backup.json    ← Dữ liệu sao lưu sạch dùng để khôi phục (Restore DB)
+│   └── feedback_logs.json     ← Log tín hiệu học phản hồi (tự sinh khi chạy)
 ├── backend/                   ← Thư mục Backend AI (Trần Minh Hoàng phụ trách)
+│   ├── README.md              ← Tài liệu chi tiết các hàm API backend & kịch bản kiểm thử
 │   ├── .env.example           ← File env mẫu
 │   ├── .gitignore             ← Bỏ qua .env, __pycache__, và .venv của backend
 │   ├── requirements.txt       ← Thư viện phụ thuộc Python
+│   ├── server.py              ← Máy chủ API FastAPI chính
 │   ├── cli_chat.py            ← CLI Chatbot (giao diện chạy thử console)
 │   ├── database.py            ← Module Mock Database Service
-│   └── agent/                 ← Module AI Agent (Gemini API logic)
-│       ├── agent.py
-│       └── prompts/
-│           └── system_instruction.txt
-└── frontend/                  ← Thư mục Frontend (chờ thành viên khác cập nhật)
-    └── README.md              ← Hướng dẫn tích hợp cho nhóm Frontend
+│   ├── agent/                 ← Module AI Agent (Gemini API logic)
+│   │   ├── agent.py           ← Logic xử lý API với Gemini 2.5 Flash
+│   │   └── prompts/
+│   │       └── system_instruction.txt ← Prompt hệ thống quy định luật chơi và ngữ cảnh AI
+│   └── test/                  ← Thư mục kiểm thử & kịch bản (Nguyễn Hữu Thái Minh phụ trách)
+│       └── manual_test_scripts.md  ← File kịch bản hội thoại mẫu chi tiết để test thủ công
+└── frontend/                  ← Thư mục Giao diện Web (Nguyễn Quang Minh phụ trách)
+    ├── README.md              ← Hướng dẫn tích hợp cho nhóm Frontend
+    ├── index.html             ← Giao diện chat & đổi lịch chính
+    ├── appointments.html      ← Giao diện xem và hủy lịch (Undo)
+    ├── css/                   ← Thư mục định dạng styles UI
+    └── js/                    ← File xử lý sự kiện frontend & gọi API
 ```
 
 ---
@@ -117,3 +128,24 @@ cat ..\..\database\feedback_logs.json
 # Đếm số lần booking thành công
 (Get-Content ..\..\database\feedback_logs.json | ConvertFrom-Json) | Where-Object { $_.user_action -eq "confirmed" } | Measure-Object | Select-Object Count
 ```
+
+---
+
+## 🎨 Hướng dẫn chạy Giao diện (Frontend)
+Dự án đã tích hợp sẵn một Web Server bằng Python để chạy đồng thời cả API và giao diện tĩnh (HTML/CSS/JS).
+
+1. Mở Terminal / Command Prompt tại thư mục gốc `codebase/`:
+   ```bash
+   cd codebase
+   python api_server.py
+   ```
+2. Mở trình duyệt web và truy cập vào: [http://localhost:8080/frontend/index.html](http://localhost:8080/frontend/index.html)
+   *(Lưu ý: API server mặc định chạy ở cổng `8080`)*
+
+**Hoặc nếu chỉ muốn chạy riêng file tĩnh (không dùng API):**
+1. Mở Terminal tại thư mục `codebase/`:
+   ```bash
+   cd codebase
+   python -m http.server 8000
+   ```
+2. Truy cập trình duyệt: [http://localhost:8000/frontend/index.html](http://localhost:8000/frontend/index.html)

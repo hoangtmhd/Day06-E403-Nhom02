@@ -283,7 +283,7 @@ def book_appointment_slot(doctor_id: str, date: str, slot: str) -> dict:
             if save_data(data):
                 return {
                     "success": True, 
-                    "message": f"Đổi lịch thành công sang bác sĩ {target_doc.get('name')} lúc {slot} ngày {date}."
+                    "message": f"Đặt lịch thành công khám bác sĩ {target_doc.get('name')} lúc {slot} ngày {date}."
                 }
             else:
                 return {"success": False, "message": "Lỗi hệ thống khi lưu lịch hẹn."}
@@ -291,9 +291,9 @@ def book_appointment_slot(doctor_id: str, date: str, slot: str) -> dict:
     return {"success": False, "message": f"Bác sĩ không có lịch trực vào ngày {date}."}
 
 
-def cancel_appointment_slot(doctor_id: str, date: str, slot: str) -> dict:
+def undo_appointment_slot(doctor_id: str, date: str, slot: str) -> dict:
     """
-    Tên hàm: cancel_appointment_slot
+    Tên hàm: undo_appointment_slot
     Mô tả: Hoàn tác (Undo) lịch khám đã đặt. Khôi phục slot giờ khám về danh sách trống
            và đặt lại trạng thái "available" cho ngày đó.
     Biến đầu vào:
@@ -393,3 +393,5 @@ def log_feedback(
     except Exception as e:
         print(f"Lỗi khi ghi feedback log: {e}")
         return False
+
+

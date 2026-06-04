@@ -24,7 +24,7 @@ Thư mục `codebase/database/` lưu dữ liệu JSON phục vụ cho luồng de
 ### 1) `doctors.json`
 
 - Vai trò: Nguồn dữ liệu chính (source of truth) cho backend đọc/ghi khi chatbot tra cứu và đặt lịch.
-- Được sử dụng bởi: `codebase/backend/database.py` qua các hàm `load_data()`, `save_data()`, `find_equivalent_doctors()`, `find_lower_rank_doctors()`, `book_appointment_slot()`, `cancel_appointment_slot()`.
+- Được sử dụng bởi: `codebase/backend/database.py` qua các hàm `load_data()`, `save_data()`, `find_equivalent_doctors()`, `find_lower_rank_doctors()`, `book_appointment_slot()`, `undo_appointment_slot()`.
 - Nội dung: Danh sách bác sĩ và lịch khám theo ngày/slot, ví dụ các trường:
   - `id`, `name`, `title`, `role`, `department`
   - `schedule[]` gồm `date`, `slots[]`, `status`, `reason` (nếu bận)
