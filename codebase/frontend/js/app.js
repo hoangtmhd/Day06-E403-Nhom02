@@ -110,8 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
         chatbotBubble.style.display = 'flex'; // show bubble again
     });
 
+    // Add global history
+    let chatHistory = [];
+
     // Send message function
-    function sendMessage() {
+    async function sendMessage() {
         const text = chatInput.value.trim();
         if (!text) return;
 
@@ -142,18 +145,63 @@ document.addEventListener('DOMContentLoaded', () => {
         chatMessages.insertAdjacentHTML('beforeend', typingHTML);
         chatMessages.scrollTop = chatMessages.scrollHeight;
 
-        // 3. Mock AI Response after 1.5s
-        setTimeout(() => {
-            document.getElementById('typing-indicator').remove();
-            const aiMsgHTML = `
+        // 3. Real fetch API to Backend
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    history: chatHistory,
+                    user_message: text
+                })
+            });
+            
+            const data = await response.json();
+            
+            // Remove typing indicator
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) indicator.remove();
+            
+            if (response.ok) {
+                // Update history
+                chatHistory.push({ role: "user", parts: [text] });
+                chatHistory.push({ 
+                    role: "model", 
+                    parts: [JSON.stringify({reply: data.reply, booking_intent: data.booking_intent})]
+                });
+
+                const aiMsgHTML = `
+                    <div class="message ai-message">
+                        <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+                        <div class="msg-bubble">${data.reply}</div>
+                    </div>
+                `;
+                chatMessages.insertAdjacentHTML('beforeend', aiMsgHTML);
+            } else {
+                const errMsgHTML = `
+                    <div class="message ai-message">
+                        <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+                        <div class="msg-bubble" style="color:red;">Lỗi kết nối tới Server AI: ${data.error || 'Unknown Error'}</div>
+                    </div>
+                `;
+                chatMessages.insertAdjacentHTML('beforeend', errMsgHTML);
+            }
+        } catch (error) {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) indicator.remove();
+            
+            const errMsgHTML = `
                 <div class="message ai-message">
                     <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
-                    <div class="msg-bubble">Hiện tại tôi đang được chạy ở chế độ Prototype (Giao diện tĩnh). Backend AI chưa được tích hợp trực tiếp vào web. Nhưng bạn có thể thấy tôi hoạt động mượt mà thế nào rồi đấy! 😉</div>
+                    <div class="msg-bubble" style="color:red;">Lỗi mạng: Không thể gọi AI Server. Vui lòng kiểm tra lại.</div>
                 </div>
             `;
-            chatMessages.insertAdjacentHTML('beforeend', aiMsgHTML);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }, 1500);
+            chatMessages.insertAdjacentHTML('beforeend', errMsgHTML);
+        }
+        
+        chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
     // Send on button click
