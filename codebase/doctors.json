@@ -1,0 +1,88 @@
+[
+  {
+    "id": "doc_001",
+    "name": "PGS.TS. Nguyễn Văn A",
+    "title": "Phó Giáo sư, Tiến sĩ",
+    "role": "Trưởng khoa Tim mạch",
+    "department": "Tim mạch",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["08:00", "09:00", "10:00"],
+        "status": "busy",
+        "reason": "Lịch mổ đột xuất"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["08:30", "10:00", "14:00"],
+        "status": "available"
+      },
+      {
+        "date": "2026-06-07",
+        "slots": ["09:00", "15:00"],
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "id": "doc_002",
+    "name": "PGS.TS. Trần Thị B",
+    "title": "Phó Giáo sư, Tiến sĩ",
+    "role": "Phó khoa Tim mạch",
+    "department": "Tim mạch",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["08:30", "09:30", "10:30", "14:00"],
+        "status": "available"
+      },
+      {
+        "date": "2026-06-06",
+        "slots": ["08:00", "11:00"],
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "id": "doc_003",
+    "name": "TS.BS. Phạm Văn C",
+    "title": "Tiến sĩ, Bác sĩ",
+    "role": "Bác sĩ điều trị chuyên khoa",
+    "department": "Tim mạch",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["09:00", "10:00", "15:00"],
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "id": "doc_004",
+    "name": "ThS.BS. Lê Hoàng D",
+    "title": "Thạc sĩ, Bác sĩ",
+    "role": "Bác sĩ điều trị",
+    "department": "Tim mạch",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["08:00", "10:30", "16:00"],
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "id": "doc_005",
+    "name": "PGS.TS. Vũ Minh E",
+    "title": "Phó Giáo sư, Tiến sĩ",
+    "role": "Trưởng khoa Cơ Xương Khớp",
+    "department": "Cơ Xương Khớp",
+    "schedule": [
+      {
+        "date": "2026-06-05",
+        "slots": ["08:30", "14:30"],
+        "status": "available"
+      }
+    ]
+  }
+]
