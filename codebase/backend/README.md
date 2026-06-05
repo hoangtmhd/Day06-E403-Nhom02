@@ -135,7 +135,7 @@ Trong quá trình kiểm thử chatbot (ví dụ: chạy đặt lịch thành c�
 
 Để khôi phục dữ liệu về trạng thái sạch ban đầu phục vụ cho demo chính thức hoặc chạy test lại:
 - **Windows (Powershell):**
-  Chạy lệnh sau tại thư mục gốc của dự án (`Day06-E403-Nhom02/`):
+  Chạy lệnh sau tại thư mục gốc của dự án (`Day06-E403-NhomC2/`):
   ```powershell
   copy codebase/database/doctors_backup.json codebase/database/doctors.json
   ```

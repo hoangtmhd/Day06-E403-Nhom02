@@ -283,7 +283,7 @@ def book_appointment_slot(doctor_id: str, date: str, slot: str) -> dict:
             if save_data(data):
                 return {
                     "success": True, 
-                    "message": f"Đổi lịch thành công sang bác sĩ {target_doc.get('name')} lúc {slot} ngày {date}."
+                    "message": f"Đặt lịch thành công khám bác sĩ {target_doc.get('name')} lúc {slot} ngày {date}."
                 }
             else:
                 return {"success": False, "message": "Lỗi hệ thống khi lưu lịch hẹn."}

@@ -1,5 +1,5 @@
 # SPEC SẢN PHẨM: TRỢ LÝ TƯ VẤN ĐỔI LỊCH KHÁM - BẠCH MAI CARE
-**Nhóm:** Thanh niên áo hồng (Nhóm 02 - E403)  
+**Nhóm:** Thanh niên áo hồng (Nhóm C2 - E403)  
 **Dự án:** Trợ lý AI xử lý sự cố hết/bận lịch khám bác sĩ đích danh tại Bạch Mai Care  
 
 ---
@@ -33,7 +33,7 @@ Qua các buổi phỏng vấn nhanh với bệnh nhân tại Bệnh viện Bạc
 |---|---|
 | **Value** (Giá trị) | - **Đối tượng:** Bệnh nhân đặt lịch khám bác sĩ đích danh nhưng gặp sự cố hết/bận lịch.<br>- **Nỗi đau:** Phải tự mò mẫm tìm kiếm ngày khác hoặc bác sĩ thay thế tương đương cùng khoa.<br>- **Giải pháp AI:** Tự động đề xuất lịch trống gần nhất hoặc bác sĩ có trình độ tương đương (chức danh PGS, TS) thông qua giao diện chat trực quan, giúp người dùng đưa ra quyết định nhanh chóng mà không cần thoát luồng. |
 | **Trust** (Niềm tin) | - **Nhận biết lỗi:** Người dùng dễ dàng so sánh đề xuất của AI (ngày khám, tên bác sĩ thay thế, chuyên khoa) trực tiếp trên giao diện chat.<br>- **Khắc phục lỗi:** Cung cấp nút hoàn tác (Undo), cho phép người dùng từ chối đề xuất và yêu cầu phương án khác ("Tìm bác sĩ khác", "Đổi ngày khác"). Nếu hệ thống lỗi nặng, cung cấp thẻ UX nổi bật để người dùng nhấn nút kết nối trực tiếp đến tổng đài viên cứu hộ. |
-| **Feasibility** (Tính khả thi) | - **Mô hình:** `Gemini 1.5 Flash` (API của Google).<br>- **Thông số:** Độ trễ mục tiêu dưới 2 giây/phản hồi, chi phí API cực kỳ thấp (khoảng $0.0001 mỗi cuộc hội thoại).<br>- **Dữ liệu đầu vào:** File mock database JSON `doctors.json` chứa thông tin lịch khám thời gian thực.<br>- **Rủi ro lớn nhất:** AI gợi ý sai bác sĩ ngoài khoa hoặc đổi lịch không tồn tại.<br>- **Ngưỡng dừng:** Độ trễ trung bình > 5 giây hoặc tỷ lệ dời lịch thành công dưới 85% trong quá trình thử nghiệm. |
+| **Feasibility** (Tính khả thi) | - **Mô hình:** `Gemini 2.5 Flash` (API của Google).<br>- **Thông số:** Độ trễ mục tiêu dưới 2 giây/phản hồi, chi phí API cực kỳ thấp (khoảng $0.0001 mỗi cuộc hội thoại).<br>- **Dữ liệu đầu vào:** File mock database JSON `doctors.json` chứa thông tin lịch khám thời gian thực.<br>- **Rủi ro lớn nhất:** AI gợi ý sai bác sĩ ngoài khoa hoặc đổi lịch không tồn tại.<br>- **Ngưỡng dừng:** Độ trễ trung bình > 5 giây hoặc tỷ lệ dời lịch thành công dưới 85% trong quá trình thử nghiệm. |
 | **Tín hiệu học** (Learning Signals) | - **Nguồn dữ liệu:** Khi người dùng đồng ý đổi lịch hoặc từ chối để chỉnh sửa lại lựa chọn, chatbot sẽ ghi nhận sự kiện này.<br>- **Lưu trữ:** Ghi log cục bộ vào file `feedback_logs.json` dưới dạng các cặp dữ liệu `[Lịch_AI_gợi_ý, Lịch_User_chọn_thực_tế]`.<br>- **Ứng dụng:** Dữ liệu log này được dùng để đánh giá độ chính xác của đề xuất và định kỳ cập nhật prompts/tập test hàng tuần nhằm tối ưu hóa thuật toán gợi ý của chatbot. |
 
 ---
@@ -128,7 +128,7 @@ graph TD
 
 | Thành viên | Vai trò | Công việc cụ thể | Bằng chứng kiểm tra trong Repo |
 |---|---|---|---|
-| **Trần Minh Hoàng**<br>(2A202600700) | **Spec/AI Backend Developer** | - Hoàn thiện tài liệu SPEC sản phẩm (`spec/spec.md`).<br>- Viết System Prompt và thiết lập luồng xử lý của API Gemini 1.5 Flash.<br>- Viết code logic xử lý cuộc thoại và gọi dữ liệu. | - File `spec/spec.md`<br>- Code logic backend gọi API LLM trong thư mục `codebase/` |
+| **Trần Minh Hoàng**<br>(2A202600700) | **Spec/AI Backend Developer** | - Hoàn thiện tài liệu SPEC sản phẩm (`spec/spec.md`).<br>- Viết System Prompt và thiết lập luồng xử lý của API Gemini 2.5 Flash.<br>- Viết code logic xử lý cuộc thoại và gọi dữ liệu. | - File `spec/spec.md`<br>- Code logic backend gọi API LLM trong thư mục `codebase/` |
 | **Nguyễn Thế Giáp**<br>(2A202600912) | **Research & Mock Data** | - Hoàn thiện hồ sơ dữ liệu tại `docs/evidence-pack.md`.<br>- Thiết lập cơ sở dữ liệu giả lập danh sách bác sĩ và lịch khám bệnh viện (`doctors.json`). | - File `docs/evidence-pack.md`<br>- File dữ liệu `codebase/doctors.json` |
 | **Nguyễn Quang Minh**<br>(2A202600994) | **Frontend Developer** | - Phát triển giao diện người dùng (UI) khung chat trực quan của Bạch Mai Care.<br>- Thiết kế các thẻ hiển thị phương án gợi ý trực quan và nút chuyển đổi tổng đài viên. | - Mã nguồn giao diện chat (HTML/CSS/JS) trong thư mục `codebase/` |
-| **Nguyễn Hữu Thái Minh**<br>(2A202600619) | **QA Tester & Demo Coordinator** | - Viết kịch bản chạy thử nghiệm các Test Cases.<br>- Thực hiện kiểm thử chatbot, ghi log lỗi.<br>- Viết kịch bản demo (`demo-script.md`), chuẩn bị slide và quay video vận hành backup. | - File kịch bản `codebase/demo-script.md`<br>- Bản ghi log test thử nghiệm và video demo đính kèm |
+| **Nguyễn Hữu Thái Minh**<br>(2A202600619) | **QA Tester & Demo Coordinator** | - Viết kịch bản hội thoại và chạy thử nghiệm các Test Cases.<br>- Thực hiện kiểm thử chatbot, ghi log lỗi.<br>- Chuẩn bị slide thuyết trình và quay video vận hành backup. | - File kịch bản `codebase/backend/test/manual_test_scripts.md`<br>- Bản ghi log test thử nghiệm và video demo đính kèm |

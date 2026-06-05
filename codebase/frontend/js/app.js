@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Vui lòng nhập tên bác sĩ cần tìm!');
                 return;
             }
-            
+
             // Clear dropdown selection
             selectedText.textContent = '- Chọn chuyên khoa -';
             selectedText.style.color = '';
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     doctorsList.innerHTML = `<p style="padding: 10px; color: red;">Lỗi khi tải danh sách Bác sĩ: ${err.message}</p>`;
                 });
         });
-        
+
         doctorSearchBox.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 searchDoctorBtn.click();
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch('/api/book', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     doctor_id: window.selectedAppointment.doctor_id,
                     date: window.selectedAppointment.date,
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Global slot selection function
     window.selectedAppointment = null;
-    window.selectSlot = function(btnElem, dataStr) {
+    window.selectSlot = function (btnElem, dataStr) {
         document.querySelectorAll('.slot-btn').forEach(btn => btn.style.background = '');
         document.querySelectorAll('.slot-btn').forEach(btn => btn.style.color = '');
         btnElem.style.background = '#d4af37';
@@ -335,22 +335,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     user_message: text
                 })
             });
-            
+
             const data = await response.json();
-            
+
             // Remove typing indicator
             const indicator = document.getElementById('typing-indicator');
             if (indicator) indicator.remove();
-            
+
             if (response.ok) {
                 // Update history
                 chatHistory.push({ role: "user", parts: [text] });
-                chatHistory.push({ 
-                    role: "model", 
-                    parts: [JSON.stringify({reply: data.reply, booking_intent: data.booking_intent})]
+                chatHistory.push({
+                    role: "model",
+                    parts: [JSON.stringify({ reply: data.reply, booking_intent: data.booking_intent })]
                 });
 
-                const cleanReply = data.reply.replace(/\*\*/g, '');
+                const cleanReply = data.reply.replace(/\*\*/g, '').replace(/\n/g, '<br>');;
                 const aiMsgHTML = `
                     <div class="message ai-message">
                         <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
@@ -370,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             const indicator = document.getElementById('typing-indicator');
             if (indicator) indicator.remove();
-            
+
             const errMsgHTML = `
                 <div class="message ai-message">
                     <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             chatMessages.insertAdjacentHTML('beforeend', errMsgHTML);
         }
-        
+
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
