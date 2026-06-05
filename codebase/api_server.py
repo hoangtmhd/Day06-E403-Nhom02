@@ -9,6 +9,7 @@ BACKEND_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'backend'
 sys.path.append(BACKEND_DIR)
 
 import urllib.parse
+# pyrefly: ignore [missing-import]
 from agent.agent import get_chat_response
 from database import book_appointment_slot, get_doctors_by_dept, find_alternative_slots
 

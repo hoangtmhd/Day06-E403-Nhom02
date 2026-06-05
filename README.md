@@ -12,6 +12,7 @@
 | **2A202600912** | Nguyễn Thế Giáp | **Research, Mock Data, Support Backend Developer** (Khảo sát, thiết lập dữ liệu mẫu `doctors.json`) |
 | **2A202600994** | Nguyễn Quang Minh | **Frontend Developer** (Phát triển giao diện UI khung chat, thẻ UX fallback) |
 | **2A202600619** | Nguyễn Hữu Thái Minh | **QA Tester & Demo Coordinator** (Kiểm thử, viết kịch bản demo, chuẩn bị slide/video) |
+| **2A202600946** | Nguyễn Đức Tâm | **Evidence Supporter** (Thu thập bằng chứng, chuẩn bị tài liệu evidence) |
 
 ---
 
